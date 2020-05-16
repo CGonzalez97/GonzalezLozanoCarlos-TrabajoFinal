@@ -25,7 +25,7 @@ public class Administrador extends Usuario {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(mappedBy="administradores")
+	@OneToMany(mappedBy="administrador")
 	private List<Anuncio> anuncios;
 	
 	public Administrador(String nick, String contrasenya, List<Mensaje> recibidos, List<Mensaje> enviados,

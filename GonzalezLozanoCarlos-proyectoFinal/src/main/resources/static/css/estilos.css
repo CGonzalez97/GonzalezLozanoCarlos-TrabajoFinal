@@ -1,0 +1,55 @@
+#iBanner{
+	height: 150px;
+}
+		
+.menu{
+	height: 40px;
+}
+
+
+#iFooter{
+	height: 100px;
+}
+iframe{
+	display: block;
+}
+
+		
+.cuerpoInicio{
+	height: 510px;
+}
+		
+
+a {
+  	text-decoration: none !important;
+}
+
+.elementoVisualizable{
+	height: 130px;
+	max-height: 130px;
+}
+
+.icono{
+	max-height: 30px;
+	max-width: 30px;
+}
+
+.tituloDatos{
+	height: 30px;
+}
+
+.headerDiv{
+	height: 150px;
+}
+
+.dato-footer{
+	height: 100px;
+}
+
+.iconoMostrado{
+	display: inline;
+}
+
+.iconoOculto{
+	display: none;
+}

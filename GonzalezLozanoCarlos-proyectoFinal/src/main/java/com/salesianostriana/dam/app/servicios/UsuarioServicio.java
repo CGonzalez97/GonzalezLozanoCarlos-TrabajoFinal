@@ -18,7 +18,11 @@ public class UsuarioServicio extends BaseService<Usuario, Long, UsuarioRepositor
 	public Optional<Usuario> buscarPorNick(String nick) {
 		return repositorio.findFirstByNick(nick);
 	}
-	
+	/*
+	public void saveUser(Usuario u) {
+		repositorio.save(u);
+	}
+	*/
 	
 
 }
