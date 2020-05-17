@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,9 +16,10 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	private final UserDetailsService userDetailsService;
+	private final SuccessHandler successHandler;
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -37,16 +39,16 @@ public class SecurityConfig {
 		
 		http
 			.authorizeRequests()
-				.antMatchers("/css/**", "/js/**").permitAll()
-				.antMatchers("/admin/**").hasRole("ROLE_ADMIN")
-				.antMatchers("/user/**").hasRole("ROLE_USER")
-				.antMatchers("/alumno/**").hasRole("ROLE_ALUMNO")
-				.antMatchers("/empresa/**").hasRole("ROLE_EMPRESA")
+				.antMatchers("/css/**", "/js/**","/imgs/**","/**").permitAll()
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/alumno/**").hasRole("ALUMNO")
+				.antMatchers("/empresa/**").hasRole("EMPRESA")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/login")
 				.permitAll()
+				.successHandler(successHandler)
 				.and()
 			.logout()
 				.logoutUrl("/logout")

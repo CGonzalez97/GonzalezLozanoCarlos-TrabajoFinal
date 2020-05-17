@@ -1,4 +1,4 @@
-#iBanner{
+.banner{
 	height: 150px;
 }
 		
@@ -7,7 +7,7 @@
 }
 
 
-#iFooter{
+.footer{
 	height: 100px;
 }
 iframe{

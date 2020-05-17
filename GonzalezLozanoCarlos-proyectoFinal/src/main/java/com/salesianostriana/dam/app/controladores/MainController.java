@@ -8,7 +8,22 @@ public class MainController {
 	
 	@GetMapping("/login")
 	public String mostrarPaginaLogin(){
-		return "paginaFormularioLogin";
+		return "/paginaFormularioLogin";
+	}
+	
+	@GetMapping("/")
+	public String mostrarPaginaLogin2(){
+		return "/paginaFormularioLogin";
+	}
+	
+	@GetMapping("/registroAlumno")
+	public String mostrarRegistroAlumno() {
+		return "/paginaFormularioRegistroAlumno";
+	}
+	
+	@GetMapping("/registroEmpresa")
+	public String mostrarRegistroEmpresa() {
+		return "/paginaFormularioRegistroEmpresa";
 	}
 
 }
