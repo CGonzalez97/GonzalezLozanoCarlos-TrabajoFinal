@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8">
 	<title>AdminVisualizacionAlumnos</title>
@@ -18,7 +18,7 @@
 <body>
 
 	<div th:replace="~{fragments/banner::banner}" class="container-fluid px-0">
-		<!--<iframe src="../fragment/banner.html" class="col-12 px-0" frameborder="0" id="iBanner"></iframe>-->
+		
 	</div>
 
 	
@@ -56,8 +56,8 @@
 
 
 
-	<div class="container-fluid px-0">
-		<iframe src="../fragment/footer.html" class="col-12 px-0" frameborder="0" id="iFooter"></iframe>
+	<div th:replace="~{fragments/footer::footer}" class="container-fluid px-0">
+		
 	</div>
 
 	<script type="text/javascript">

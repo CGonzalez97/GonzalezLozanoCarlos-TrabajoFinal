@@ -10,6 +10,7 @@ import com.salesianostriana.dam.app.entidades.Administrador;
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Empresa;
 import com.salesianostriana.dam.app.entidades.Usuario;
+import com.salesianostriana.dam.app.servicios.AlumnoServicio;
 import com.salesianostriana.dam.app.servicios.UsuarioServicio;
 
 @SpringBootApplication
@@ -19,21 +20,17 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 		SpringApplication.run(GonzalezLozanoCarlosProyectoFinalApplication.class, args);
 	}
 	
+	/*
 	@Bean
-	public CommandLineRunner init (UsuarioServicio usuarioServicio, BCryptPasswordEncoder passwordEncoder) {
+	public CommandLineRunner init (UsuarioServicio usuarioServicio, AlumnoServicio servicioAlu, BCryptPasswordEncoder passwordEncoder) {
 		
 		return args->{
 			Usuario p=new Alumno();
 			p.setNick("usuario");
-			p.setContrasenya("usuario");
-			/*p.setNombre("Usuario1");
-			p.setEmail("afbiubfuiaf@gmail.com");
-			p.setDireccion("ijkbjafbai");
-			p.setFechaNacimiento(Date.now);
-			p.setGradoCursado("afnuicpq");
-			p.setFechaInicioGrado(Date.now);
-			p.setFechaFinGrado(Date.now);*/
+			p.setContrasenya(passwordEncoder.encode("usuario"));
+			
 			usuarioServicio.save(p);
+			
 			
 			Usuario a=new Administrador();
 			p.setNick("admin");
@@ -43,13 +40,39 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			Usuario e=new Empresa();
 			e.setNick("empresa");
 			e.setContrasenya(passwordEncoder.encode("empresa"));
-			usuarioServicio.save(e);
-			
-			
-			
+			usuarioServicio.save(e);		
 			
 		};
 		
+	}
+	*/
+	
+	@Bean
+	public CommandLineRunner init(UsuarioServicio servicio, BCryptPasswordEncoder passwordEncoder) {
+		return args -> {
+			
+			Usuario u = new Alumno();
+			
+			u.setNick("alumno");
+			u.setContrasenya(passwordEncoder.encode("1234"));
+			
+			servicio.save(u);
+			
+			
+			Usuario a = new Administrador();
+			
+			a.setNick("admin");
+			a.setContrasenya(passwordEncoder.encode("admin"));
+			
+			servicio.save(a);
+			
+			Usuario e=new Empresa();
+			e.setNick("empresa");
+			e.setContrasenya("1234");
+			
+			servicio.save(e);
+			
+		};
 	}
 
 }

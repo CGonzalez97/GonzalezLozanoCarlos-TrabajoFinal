@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8">
 	<title>VisualizaciónPerfilAlumno</title>
@@ -11,14 +11,14 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 	
-	<link rel="stylesheet" type="text/css" href="../static/css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
 
 
 </head>
 <body>
 
 	<div th:replace="~{fragments/banner::banner}" class="container-fluid px-0">
-		<!--<iframe src="../fragment/banner.html" class="col-12 px-0" frameborder="0" id="iBanner"></iframe>-->
+		
 	</div>
 
 	
@@ -26,13 +26,18 @@
 	<div class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
 		
 		<ul class="d-flex flex-row col-8 offset-2 container-fluid bg-warning text-dark my-0" >
-			<li data-target="#demo" data-slide-to="0" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Anuncios</div></a></li>
+			<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="/alumno/alumnoVisualizacionAnuncios" class="text-dark text-decoration-none"><div>Anuncios</div></a></li>
 			
-			<li data-target="#demo" data-slide-to="1" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Empresas</div></a></li>
+			<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="/alumno/alumnoVisualizacionEmpresas" class="text-dark text-decoration-none"><div>Empresas</div></a></li>
 
-			<li data-target="#demo" data-slide-to="2" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Mensajes</a></li>
-
-			<li data-target="#demo" data-slide-to="2" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Logout</div></a></li>
+			<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Mensajes</a></li>
+			
+			<div th:replace="~{fragments/opcionLogout::opcionLogout}" class="d-flex align-items-center justify-content-center col-3">
+				<!-- 
+				<form th:action="@{/logout}" method="POST" id="logoutForm"></form>
+				<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="javascript:document.getElementById('logoutForm').submit()" class="text-dark text-decoration-none"><div>Logout</div></a></li>
+				 -->
+			</div>
 
 		</ul>
 
@@ -50,9 +55,9 @@
 				<div class="col-4 h3">Sus Datos</div>
 				<div class="col-1">
 
-					<img src="../static/imgs/iconoEngranaje.jpg" class="icono iconoMostrado">
-					<img src="../static/imgs/eliminar.jpg" class="icono my-1 iconoOculto" >
-					<img src="../static/imgs/deshacer.png" class="icono my-1 iconoOculto" >
+					<img src="../imgs/iconoEngranaje.jpg" class="icono iconoMostrado">
+					<img src="../imgs/eliminar.jpg" class="icono my-1 iconoOculto" >
+					<img src="../imgs/deshacer.png" class="icono my-1 iconoOculto" >
 
 				</div>
 			</div>
@@ -76,8 +81,8 @@
 
 
 
-	<div class="container-fluid px-0">
-		<iframe src="../fragment/footer.html" class="col-12 px-0" frameborder="0" id="iFooter"></iframe>
+	<div th:replace="~{fragments/footer::footer}" class="container-fluid px-0">
+		
 	</div>
 
 	<script type="text/javascript">
