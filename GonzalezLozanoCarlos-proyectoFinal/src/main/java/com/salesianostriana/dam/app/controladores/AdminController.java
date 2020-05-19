@@ -10,5 +10,27 @@ public class AdminController {
 	public String accesoVisualizacionAnuncios() {
 		return "/admin/adminVisualizacionAnuncios";
 	}
+	
+	@GetMapping("admin/adminVisualizacionAlumnos")
+	public String accesoVisualizacionAlumnos() {
+		return "admin/adminVisualizacionAlumnos";
+	}
+	
+	@GetMapping("admin/adminVisualizacionEmpresas")
+	public String accesoVisualizacionEmpresas() {
+		return "admin/adminVisualizacionEmpresas";
+	}
+	
+	@GetMapping("admin/adminVisualizacionPerfilAlumno")
+	public String accesoVisualizacionPerfilAlumno() {
+		return "admin/adminVisualizacionPerfilAlumno";
+	}
+	
+	@GetMapping("admin/adminVisualizacionPerfilAnuncio")
+	public String accesoVisualizacionPerfilAnuncio() {
+		return "admin/adminVisualizacionPerfilAnuncio";
+	}
+	
+	
 
 }

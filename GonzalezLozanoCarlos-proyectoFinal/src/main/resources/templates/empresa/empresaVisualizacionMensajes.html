@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8">
-	<title>VisualizacionAdminAnuncios</title>
+	<title>VisualizaciónEmpresaMensajes</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -10,7 +10,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
+	
 	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
 
 
@@ -21,18 +21,11 @@
 		
 	</div>
 
+	
 
-	<div th:replace="~{fragments/menuAdmin::menuAdmin}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
+	<div th:replace="~{fragments/menuEmpresa::menuEmpresa}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
 		
-		<ul class="d-flex flex-row col-8 offset-2 container-fluid bg-warning text-dark my-0" >
-			<li data-target="#demo" data-slide-to="0" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="/admin/adminVisualizacionAnuncios" class="text-dark text-decoration-none"><div>Anuncios</div></a></li>
-			
-			<li data-target="#demo" data-slide-to="1" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Alumnos</div></a></li>
-
-			<li data-target="#demo" data-slide-to="2" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Empresas</div></a></li>
-
-			<li data-target="#demo" data-slide-to="2" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Logout</div></a></li>
-		</ul>
+		
 
 	</div>
 
@@ -40,13 +33,11 @@
 		
 		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column   align-items-center">
 			
-			<a href=""><div><h2>Añadir Anuncio</h2></div></a>
 			
 			<table class="mt-3 col-10">
-				<tr class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3"><td class="h2"><a href="" class="text-dark text-decoration-none">TituloAnuncio1</a></td><td>FechaPublicacion1</td></tr>
+				<tr class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3"><td class="h2"><a href="" class="text-dark text-decoration-none">Remitente</a></td><td>FechaEnvio</td></tr>
 				
 			</table>
-			
 
 			
 

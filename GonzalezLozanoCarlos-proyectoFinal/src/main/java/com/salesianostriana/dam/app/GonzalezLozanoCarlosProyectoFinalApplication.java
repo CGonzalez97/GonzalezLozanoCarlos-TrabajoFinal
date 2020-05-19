@@ -68,7 +68,7 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			
 			Usuario e=new Empresa();
 			e.setNick("empresa");
-			e.setContrasenya("1234");
+			e.setContrasenya(passwordEncoder.encode("1234"));
 			
 			servicio.save(e);
 			
