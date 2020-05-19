@@ -39,11 +39,16 @@
 
 	<div class="col-12 bg-dark container-fluid cuerpoInicio" >
 		
-		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column   align-items-center">
+		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column   align-items-center cuerpoInicio">
+		
+		<a href=""><div><h2>Añadir Empresa</h2></div></a>
 			
 			
 			<table class="mt-3 col-10">
-				<tr class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3"><td class="h2"><a href="" class="text-dark text-decoration-none">Nombre</a></td><td>Sector</td></tr>
+				<tr th:each="empresa :${empresas}" class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3">
+					<td  class="h2"><a th:text="${empresa.nombre}" href="" class="text-dark text-decoration-none">Nombre</a></td>
+					<td th:text="${empresa.sector}">Sector</td>
+				</tr>
 				
 			</table>
 			

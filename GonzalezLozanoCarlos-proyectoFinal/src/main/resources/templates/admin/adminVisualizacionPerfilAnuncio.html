@@ -39,7 +39,7 @@
 
 	<div class="col-12 bg-dark container-fluid cuerpoInicio" >
 		
-		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column container-fluid  ">
+		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column container-fluid cuerpoInicio ">
 			
 			
 
@@ -57,9 +57,9 @@
 			
 			<div class="col-11">
 				<table class="table table-striped mt-3 col-10">
-					<tr><td>Fecha</td></tr>
-					<tr><td>Título</td></tr>
-					<tr><td>Descripción</td></tr>
+					<tr><td  th:text="${anuncio.fechaEvento}">Fecha</td></tr>
+					<tr><td th:text="${anuncio.titulo}">Título</td></tr>
+					<tr><td th:text="${anuncio.descripcion}">Descripción</td></tr>
 					
 				</table>
 			</div>

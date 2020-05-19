@@ -1,7 +1,6 @@
 package com.salesianostriana.dam.app.entidades;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class Anuncio {
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	private Date fechaEvento;
+	private LocalDate fechaEvento;
 	private String titulo;
 	private String descripcion;
 	
@@ -29,7 +28,7 @@ public class Anuncio {
 	@ManyToOne
 	private Administrador administrador;
 
-	public Anuncio(Date fechaEvento, String titulo, String descripcion, Administrador administrador) {
+	public Anuncio(LocalDate fechaEvento, String titulo, String descripcion, Administrador administrador) {
 		super();
 		this.fechaEvento = fechaEvento;
 		this.titulo = titulo;
