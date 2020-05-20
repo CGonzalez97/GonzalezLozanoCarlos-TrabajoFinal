@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,7 @@ public class Anuncio {
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate fechaEvento;
 	private String titulo;
 	private String descripcion;

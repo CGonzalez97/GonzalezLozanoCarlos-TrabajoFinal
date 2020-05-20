@@ -40,9 +40,9 @@
 				<div class="col-4 h3">Sus Datos</div>
 				<div class="col-1">
 
-					<img src="../imgs/iconoEngranaje.jpg" class="icono my-1 iconoMostrado" >
-					<img src="../imgs/eliminar.jpg" class="icono my-1 iconoOculto" >
-					<img src="../imgs/deshacer.png" class="icono my-1 iconoOculto" >
+					<img src="/imgs/iconoEngranaje.jpg" class="icono my-1 iconoMostrado" >
+					<a th:href="@{/admin/adminEliminarEmpresa/{id}(id=${empresa.id})}"><img src="/imgs/eliminar.jpg" class="icono my-1 iconoMostrado" ></a>
+					<!-- <img src="/imgs/deshacer.png" class="icono my-1 iconoOculto" > -->
 
 				</div>
 

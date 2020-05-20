@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8">
-	<title>VisualizacionAdminEmpresas</title>
+	<title>AdminAddAnuncio</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -10,7 +10,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
+	
 	<link rel="stylesheet" type="text/css" href="/css/estilos.css">
 
 
@@ -23,7 +23,7 @@
 
 	
 
-	<div th:replace="~{fragments/menuAdmin::menuAdmin}" class="container-fluid col-12 bg-warning px-0 mx-0 menu">
+	<div th:replace="~{fragments/menuAdmin::menuAdmin}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
 		
 		<ul class="d-flex flex-row col-8 offset-2 container-fluid bg-warning text-dark my-0" >
 			<li data-target="#demo" data-slide-to="0" class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Anuncios</div></a></li>
@@ -38,19 +38,50 @@
 	</div>
 
 	<div class="col-12 bg-dark container-fluid cuerpoInicio" >
+	
+	
 		
 		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column   align-items-center cuerpoInicio">
 		
-		<a href="/admin/adminAddEmpresa"><div><h2>Añadir Empresa</h2></div></a>
+		
+			<form  method="POST" th:action="adminAddAnuncio"  th:object="${anuncioForm}"    class="col-12 container-fluid   d-flex justify-content-center flex-column mx-0 px-0 d-flex justify-content-center flex-column " name="formularioAddAnuncio" id="formularioAddAnuncio">
 			
-			
-			<table class="mt-3 col-10">
-				<tr th:each="empresa :${empresas}" class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3">
-					<td  class="h2"><a th:text="${empresa.nombre}" th:href="@{/admin/visualizacionPerfilEmpresa/{id}(id=${empresa.id})}" class="text-dark text-decoration-none">Nombre</a></td>
-					<td th:text="${empresa.sector}">Sector</td>
-				</tr>
+			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
 				
-			</table>
+				<div class="col-4 d-flex justify-content-center flex-column">
+					<label for="titulo">Título</label><input th:field="*{titulo}" type="text" name="titulo" id="titulo">
+				</div>
+				
+
+
+			</div>
+			
+			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
+				
+				<div class="col-4 d-flex justify-content-center flex-column">
+					<label for="fechaEvento">Fecha del Evento</label><input th_field="*{fechaEvento}" type="date" name="fechaEvento" id="fechaEvento">
+				</div>
+
+			</div>
+
+			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
+				
+				<div class="col-12 d-flex justify-content-center flex-column">
+					<label for="descripcion">Descripción</label><input th:field="*{descripcion}" type="text" name="descripcion" id="descripcion">
+				</div>
+				
+
+			</div>
+
+			
+
+			<div class="col-12 d-flex justify-content-center my-4">
+				<input type="submit" name="formularioAddAnuncio" id="envioFormRegAlumno">
+			</div>
+
+		</form>
+			
+			
 			
 
 			
