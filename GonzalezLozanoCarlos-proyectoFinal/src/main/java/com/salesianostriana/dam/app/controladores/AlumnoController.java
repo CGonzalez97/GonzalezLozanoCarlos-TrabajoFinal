@@ -2,14 +2,18 @@ package com.salesianostriana.dam.app.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Anuncio;
 import com.salesianostriana.dam.app.entidades.Empresa;
+import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.servicios.AlumnoServicio;
 import com.salesianostriana.dam.app.servicios.AnuncioServicio;
 import com.salesianostriana.dam.app.servicios.EmpresaServicio;
@@ -81,6 +85,38 @@ public class AlumnoController {
 		model.addAttribute("anuncio", an);
 		return "alumno/alumnoVisualizacionPerfilAnuncio";
 	}
+	//Eliminar perfil propio
+	@GetMapping("/alumno/alumnoEliminarAlumno/{id}")
+	public String alumnoEliminarPerfilPropio(Model model,  @PathVariable Long id) {
+		usuarioServicio.deleteById(id);
+		return "/paginaFormularioLogin";
+		
+	}
+	
+	//----------------------------------------------------------
+	//Modificar perfil
+	@GetMapping("/alumno/alumnoModificarPerfil")
+	public String  accesoRegistroAlumno(Model model, @AuthenticationPrincipal Alumno alumno) {		
+		model.addAttribute("alumnoForm", alumno);
+		return "/alumno/alumnoModificarPerfil";
+	}
+	
+	@PostMapping("/alumno/alumnoEditPerfil")
+	public String procesarAlumnoModificarPerfil( @AuthenticationPrincipal Alumno al, @ModelAttribute("alumnoForm")Alumno alumno, Model model,BCryptPasswordEncoder passwordEncoder  ) {
+//		usuarioServicio.save(alumno);
+		//model.addAttribute("alumno", alumno);
+		
+		usuarioServicio.editar(alumno, al);
+		usuarioServicio.edit(al);
+		
+		return accesoPerfilAlumno(al ,  model)/*"alumnoVisualizacionPerfilAlumno"*/;
+	}
+	
+//	@GetMapping("/alumno/alumnoVisualizacionPerfilAlumno")
+//	public String aaccesoPerfilAlumno(@AuthenticationPrincipal Alumno alumno, Model model) {
+//		model.addAttribute("alumno", alumno);
+//		return "/alumno/alumnoVisualizacionPerfilAlumno";
+//	}
 	
 	
 	

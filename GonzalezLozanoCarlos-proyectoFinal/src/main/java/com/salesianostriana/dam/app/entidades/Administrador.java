@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -25,7 +26,7 @@ public class Administrador extends Usuario {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(mappedBy="administrador")
+	@OneToMany(fetch =FetchType.EAGER, mappedBy="administrador")
 	private List<Anuncio> anuncios;
 	
 	public Administrador(String nick, String contrasenya, List<Mensaje> recibidos, List<Mensaje> enviados,

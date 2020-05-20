@@ -64,6 +64,13 @@ public class EmpresaController {
 		return "empresa/empresaVisualizacionPerfilAlumno";
 	}
 	
+	@GetMapping("/empresa/empresaEliminarEmpresa/{id}")
+	public String eliminarPerfilEmpresaPropio(Model model, @PathVariable Long id) {
+		usuarioServicio.deleteById(id);
+		return "/paginaFormularioLogin";
+		
+	}
+	
 	
 	
 	

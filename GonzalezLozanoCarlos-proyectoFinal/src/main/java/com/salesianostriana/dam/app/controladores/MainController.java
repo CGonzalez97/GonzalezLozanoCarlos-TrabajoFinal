@@ -62,8 +62,8 @@ public class MainController {
 	
 	@PostMapping("/addAlumno")
 	public String procesarFormularioAlumno(@ModelAttribute("alumnoForm")Alumno alumno, Model model,BCryptPasswordEncoder passwordEncoder  ) {
-		alumno.setContrasenya(passwordEncoder.encode(alumno.getContrasenya()));
-		alumnoServicio.save(alumno);
+//		alumno.setContrasenya(passwordEncoder.encode(alumno.getContrasenya()));
+		usuarioServicio.save(alumno, passwordEncoder);
 		return "/paginaFormularioLogin";
 	}
 	
@@ -79,8 +79,8 @@ public class MainController {
 	
 	@PostMapping("/addEmpresa")
 	public String procesarFormularioEmpresa(@ModelAttribute Empresa empresa, Model model, BCryptPasswordEncoder passwordEncoder) {
-		empresa.setContrasenya(passwordEncoder.encode(empresa.getContrasenya()));
-		empresaServicio.save(empresa);
+//		empresa.setContrasenya(passwordEncoder.encode(empresa.getContrasenya()));
+		usuarioServicio.save(empresa, passwordEncoder);
 		return "/paginaFormularioLogin";
 	}
 	

@@ -24,32 +24,7 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 		SpringApplication.run(GonzalezLozanoCarlosProyectoFinalApplication.class, args);
 	}
 	
-	/*
-	@Bean
-	public CommandLineRunner init (UsuarioServicio usuarioServicio, AlumnoServicio servicioAlu, BCryptPasswordEncoder passwordEncoder) {
-		
-		return args->{
-			Usuario p=new Alumno();
-			p.setNick("usuario");
-			p.setContrasenya(passwordEncoder.encode("usuario"));
-			
-			usuarioServicio.save(p);
-			
-			
-			Usuario a=new Administrador();
-			p.setNick("admin");
-			p.setContrasenya(passwordEncoder.encode("admin"));
-			usuarioServicio.save(a);
-			
-			Usuario e=new Empresa();
-			e.setNick("empresa");
-			e.setContrasenya(passwordEncoder.encode("empresa"));
-			usuarioServicio.save(e);		
-			
-		};
-		
-	}
-	*/
+	
 	
 	@Bean
 	public CommandLineRunner init(AnuncioServicio anuncioServicio, UsuarioServicio servicio, BCryptPasswordEncoder passwordEncoder) {
@@ -206,9 +181,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 					
 			
 			Anuncio an3=new Anuncio();
-			an3.setTitulo("Campaña Kilo");
-			an3.setDescripcion("Esta semana se celebrarán las fiestas de María Auxiliadora,"
-					+ " todos estáis invitados.");
+			an3.setTitulo("Playbacks");
+			an3.setDescripcion("Esta semana se llevarán a cabo los playbacks 2020, reserven sus entradas.");
 			an3.setFechaEvento(LocalDate.now());
 			anuncioServicio.save(an3);		
 			((Administrador) a).addAnuncio(an3);
