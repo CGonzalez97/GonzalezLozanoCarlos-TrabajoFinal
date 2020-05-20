@@ -12,7 +12,7 @@
 
 	
 
-	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="/css/estilos.css">
 
 
 </head>
@@ -24,18 +24,9 @@
 
 	
 	
-	<div class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
+	<div th:replace="~{fragments/menuEmpresa::menuEmpresa}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
 		
-		<ul class="d-flex flex-row col-8 offset-2 container-fluid bg-warning text-dark my-0" >
-			
-			
-			<li data-target="#demo" data-slide-to="1" class="col-4 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Alumnos</div></a></li>
-
-			<li data-target="#demo" data-slide-to="2" class="col-4 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Mi Perfil</a></li>
-
-			<li data-target="#demo" data-slide-to="2" class="col-4 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Logout</div></a></li>
-
-		</ul>
+		
 
 	</div>
 	
@@ -55,11 +46,12 @@
 			
 			<div class="col-11">
 				<table class="table table-striped mt-3 col-10">
-					<tr><td>Nombre</td></tr>
-					<tr><td>Email</td></tr>
-					<tr><td>GradoCursado</td></tr>
-					<tr><td>FechaInicioGrado</td></tr>
-					<tr><td>FechaFinGrado</td></tr>
+					<tr><td>Nombre</td><td th:text="${alumno.nombre}">Nombre</td></tr>
+					<tr><td>Email</td><td th:text="${alumno.email}">Email</td></tr>
+					<tr><td>Grado Cursado</td><td th:text="${alumno.gradoCursado}">GradoCursado</td></tr>
+					<tr><td>Fecha de Inicio del Grado</td><td th:text="${alumno.fechaInicioGrado}">FechaInicioGrado</td></tr>
+					<tr><td>Fecha de Fin del Grado</td><td th:text="${alumno.fechaFinGrado}">FechaFinGrado</td></tr>
+					<tr><td>Fecha de Nacimiento</td><td th:text="${alumno.fechaNacimiento}">fechaNacimiento</td></tr>
 				</table>
 			</div>
 

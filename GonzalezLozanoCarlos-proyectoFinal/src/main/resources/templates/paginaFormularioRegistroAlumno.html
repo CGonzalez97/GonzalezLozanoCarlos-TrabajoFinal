@@ -41,19 +41,36 @@
 			
 			<div class="col-12 container-fluid  px-0 d-flex justify-content-center flex-column align-items-center" id="contenedorFormularioRegistroAlumno">
 		
-		<form class="col-12 container-fluid   d-flex justify-content-center flex-column mx-0 px-0 d-flex justify-content-center flex-column " name="formularioRegistroAlumno" id="formularioRegistroAlumno">
+		<form  method="POST" th:action="addAlumno"  th:object="${alumnoForm}"    class="col-12 container-fluid   d-flex justify-content-center flex-column mx-0 px-0 d-flex justify-content-center flex-column " name="formularioRegistroAlumno" id="formularioRegistroAlumno">
 			
 			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
 				
 				<div class="col-4 d-flex justify-content-center flex-column">
-					<label for="nombreAlumno">Nombre</label><input type="text" name="nombreAlumno" id="nombreAlumno">
+					<label for="nombreAlumno">Nick</label><input th:field="*{nick}" type="text" name="nick" id="nick">
 				</div>
 				<div class="col-4 d-flex justify-content-center flex-column">
-					<label for="apellidosAlumno">Apellidos</label><input type="text" name="apellidosAlumno" id="apellidosAlumno">
+					<label for="apellidosAlumno">Contraseña</label><input th_field="*{contrasenya}" type="password" name="contrasenya" id="contrasenya">
 				</div>
 
 				<div class="col-4 d-flex justify-content-center flex-column">
-					<label for="nacimientoAlumno">Fecha de nacimiento</label><input type="date" name="nacimientoAlumno" id="nacimientoAlumno">
+					<label for="nacimientoAlumno">Repite la contraseña</label><input type="password" name="contrasenyaRepe" id=""contrasenyaRepe"">
+				</div>
+
+			</div>
+			
+			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
+				
+				<div class="col-7 d-flex justify-content-center flex-column">
+					<label for="nombreAlumno">Nombre completo</label><input th:field="*{nombre}" type="text" name="nombreAlumno" id="nombreAlumno">
+				</div>
+				<!-- 
+				<div class="col-4 offset-2 d-flex justify-content-center flex-column">
+					<label for="apellidosAlumno">Apellidos</label><input type="text" name="apellidosAlumno" id="apellidosAlumno">
+				</div>
+				 -->
+
+				<div class="col-5 d-flex justify-content-center flex-column">
+					<label for="nacimientoAlumno">Fecha de nacimiento</label><input th:field="*{fechaNacimiento}"  type="date" name="nacimientoAlumno" id="nacimientoAlumno">
 				</div>
 
 			</div>
@@ -61,10 +78,10 @@
 			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
 				
 				<div class="col-6 d-flex justify-content-center flex-column">
-					<label for="emailAlumno">Email</label><input type="text" name="emailAlumno" id="emailAlumno">
+					<label for="emailAlumno">Email</label><input th:field="*{email}" type="text" name="emailAlumno" id="emailAlumno">
 				</div>
 				<div class="col-6 d-flex justify-content-center flex-column">
-					<label for="direccionAlumno">Dirección</label><input type="text" name="direccionAlumno" id="direccionAlumno">
+					<label for="direccionAlumno">Dirección</label><input th:field="*{direccion}" type="text" name="direccionAlumno" id="direccionAlumno">
 				</div>
 
 			</div>
@@ -73,7 +90,7 @@
 				
 				<div class="col-4 d-flex justify-content-center flex-column">
 					<label for="gradoAlumno">Grado</label>
-					<select name="gradoAlumno" id="gradoAlumno" form="formularioRegistroAlumno">
+					<select th:field="*{gradoCursado}" name="gradoAlumno" id="gradoAlumno" form="formularioRegistroAlumno">
 						
 						<option value="GestionAdministrativa">Gestión Administrativa</option>
 						<option value="ActividadesComerciales">Actividades Comerciales</option>
@@ -86,11 +103,11 @@
 					</select>
 				</div>
 				<div class="col-4 d-flex justify-content-center flex-column">
-					<label for="fechaInicioGradoAlumno">Inicio</label><input type="date" name="fechaInicioGradoAlumno" id="fechaInicioGradoAlumno">
+					<label for="fechaInicioGradoAlumno">Inicio</label><input th:field="*{fechaInicioGrado}" type="date" name="fechaInicioGradoAlumno" id="fechaInicioGradoAlumno">
 				</div>
 
 				<div class="col-4 d-flex justify-content-center flex-column">
-					<label for="fechaFinGradoAlumno">Fin</label><input type="date" name="fechaFinGradoAlumno" id="fechaFinGradoAlumno">
+					<label for="fechaFinGradoAlumno">Fin</label><input th:field="*{fechaFinGrado}" type="date" name="fechaFinGradoAlumno" id="fechaFinGradoAlumno">
 				</div>
 
 			</div>

@@ -11,7 +11,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 	
-	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="/css/estilos.css">
 
 
 </head>
@@ -47,9 +47,9 @@
 				<div class="col-4 h3">Sus Datos</div>
 				<div class="col-1">
 
-					<img src="../imgs/iconoEngranaje.jpg"  class="icono iconoMostrado">
-					<img src="../imgs/eliminar.jpg" class="icono my-1 iconoOculto" >
-					<img src="../imgs/deshacer.png" class="icono my-1 iconoOculto" >
+					<img src="/imgs/iconoEngranaje.jpg"  class="icono iconoMostrado">
+					<img src="/imgs/eliminar.jpg" class="icono my-1 iconoOculto" >
+					<img src="/imgs/deshacer.png" class="icono my-1 iconoOculto" >
 
 				</div>
 			</div>
@@ -57,9 +57,9 @@
 			
 			<div class="col-11">
 				<table class="table table-striped mt-3 col-10">
-					<tr><td  th:text="${anuncio.fechaEvento}">Fecha</td></tr>
-					<tr><td th:text="${anuncio.titulo}">Título</td></tr>
-					<tr><td th:text="${anuncio.descripcion}">Descripción</td></tr>
+					<tr><td>Fecha</td><td  th:text="${anuncio.fechaEvento}">Fecha</td></tr>
+					<tr><td>Título</td><td th:text="${anuncio.titulo}">Título</td></tr>
+					<tr><td>Descripción</td><td th:text="${anuncio.descripcion}">Descripción</td></tr>
 					
 				</table>
 			</div>

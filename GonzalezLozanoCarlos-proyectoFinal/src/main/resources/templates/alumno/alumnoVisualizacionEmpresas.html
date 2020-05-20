@@ -43,7 +43,10 @@
 			
 			
 			<table class="mt-3 col-10">
-				<tr class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3"><td class="h2"><a href="" class="text-dark text-decoration-none">Nombre</a></td><td>Sector</td></tr>
+				<tr th:each="empresa:${empresas}" class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3">
+					<td class="h2"><a th:text="${empresa.nombre}" th:href="@{/alumno/alumnoVisualizacionPerfilEmpresa/{id}(id=${empresa.id})}" class="text-dark text-decoration-none">Nombre</a></td>
+					<td th:text="${empresa.sector}">Sector</td>
+				</tr>
 				
 			</table>
 

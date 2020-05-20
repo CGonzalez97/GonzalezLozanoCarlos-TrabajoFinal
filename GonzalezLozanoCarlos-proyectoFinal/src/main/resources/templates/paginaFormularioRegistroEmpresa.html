@@ -40,16 +40,30 @@
 			
 			<div class="col-12 container-fluid  px-0 d-flex justify-content-center flex-column align-items-center" id="contenedorFormularioRegistroEmpresa">
 		
-		<form class="col-12 container-fluid   d-flex justify-content-center flex-column mx-0 px-0 d-flex justify-content-center flex-column ">
+		<form method="POST" th:action="addEmpresa" th:object="${empresaForm}" class="col-12 container-fluid   d-flex justify-content-center flex-column mx-0 px-0 d-flex justify-content-center flex-column ">
 			
+			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
+				
+				<div class="col-4 d-flex justify-content-center flex-column">
+					<label for="nombreAlumno">Nick</label><input th:field="*{nick}" type="text" name="nick" id="nick">
+				</div>
+				<div class="col-4 d-flex justify-content-center flex-column">
+					<label for="apellidosAlumno">Contraseña</label><input th:field="*{contrasenya}" type="password" name="contrasenya" id="contrasenya">
+				</div>
+
+				<div class="col-4 d-flex justify-content-center flex-column">
+					<label for="nacimientoAlumno">Repite la contraseña</label><input type="password" name="contrasenyaRepe" id=""contrasenyaRepe"">
+				</div>
+
+			</div>
 
 			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
 				
 				<div class="col-6 d-flex justify-content-center flex-column">
-					<label for="nombreEmpresa">Nombre</label><input type="text" name="nombreEmpresa" id="nombreEmpresa">
+					<label for="nombreEmpresa">Nombre</label><input th:field="*{nombre}" type="text" name="nombreEmpresa" id="nombreEmpresa">
 				</div>
 				<div class="col-6 d-flex justify-content-center flex-column">
-					<label for="nombreSector">Sector</label><input type="text" name="nombreSector" id="nombreSector">
+					<label for="nombreSector">Sector</label><input th:field="*{sector}" type="text" name="nombreSector" id="nombreSector">
 				</div>
 
 			</div>
@@ -57,10 +71,10 @@
 
 			<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL2">
 				<div class="col-6 d-flex justify-content-center flex-column">
-					<label for="cifEmpresa">CIF</label><input type="text" name="cifEmpresa" id="cifEmpresa">
+					<label for="cifEmpresa">CIF</label><input th:field="*{cif}" type="text" name="cifEmpresa" id="cifEmpresa">
 				</div>
 				<div class="col-6 d-flex justify-content-center flex-column">
-					<label for="telefonoEmpresa">Télefono</label><input type="text" name="telefonoEmpresa" id="telefonoEmpresa">
+					<label for="telefonoEmpresa">Télefono</label><input th:field="*{telefono}" type="text" name="telefonoEmpresa" id="telefonoEmpresa">
 				</div>
 			</div>
 
@@ -68,7 +82,7 @@
 			<div class="my-1 col-12 container-fluid">
 				
 				<div class="col-10 offset-1 d-flex justify-content-center flex-column">
-					<label for="emailEmpresa">Email</label><input type="email" name="emailEmpresa" id="emailEmpresa">
+					<label for="emailEmpresa">Email</label><input th:field="*{email}" type="email" name="emailEmpresa" id="emailEmpresa">
 				</div>
 
 			</div>
@@ -77,7 +91,7 @@
 			<div class="my-1 col-12">
 
 				<div class="col-10 offset-1 d-flex justify-content-center flex-column">
-					<label for="direccionEmpresa">Dirección</label><input type="email" name="direccionEmpresa" id="direccionEmpresa">
+					<label for="direccionEmpresa">Dirección</label><input th:field="*{direccion}" type="text" name="direccionEmpresa" id="direccionEmpresa">
 				</div>
 
 			</div>

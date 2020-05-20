@@ -51,12 +51,12 @@
 			
 			<div class="col-11">
 				<table class="table table-striped mt-3 col-10">
-					<tr><td>CIF</td></tr>
-					<tr><td>Nombre</td></tr>
-					<tr><td>Sector</td></tr>
-					<tr><td>Email</td></tr>
-					<tr><td>Dirección</td></tr>
-					<tr><td>Teléfono</td></tr>
+					<tr><td>CIF</td><td th:text="${empresa.cif}">cif</td></tr>
+					<tr><td>Nombre</td><td th:text="${empresa.nombre}">nombre</td></tr>
+					<tr><td>Sector</td><td th:text="${empresa.sector}">sector</td></tr>
+					<tr><td>Email</td><td th:text="${empresa.email}">email</td></tr>
+					<tr><td>Dirección</td><td th:text="${empresa.direccion}">direccion</td></tr>
+					<tr><td>Teléfono</td><td th:text="${empresa.telefono}">telefono</td></tr>
 				</table>
 			</div>
 			
