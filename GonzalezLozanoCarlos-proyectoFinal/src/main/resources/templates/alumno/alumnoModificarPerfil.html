@@ -52,10 +52,10 @@
 				<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
 					
 					<div class="col-4 d-flex justify-content-center flex-column">
-						<label for="nombreAlumno">Nick</label><input th:field="*{nick}" type="text" name="nick" id="nick">
+						<label for="nombreAlumno">Nick</label><input th:field="*{nick}" th:value="*{nick}" type="text" name="nick" id="nick">
 					</div>
 					<div class="col-4 d-flex justify-content-center flex-column">
-						<label for="apellidosAlumno">Contraseña</label><input th_field="*{contrasenya}" type="password" name="contrasenya" id="contrasenya">
+						<label for="apellidosAlumno">Contraseña</label><input th_field="*{contrasenya}" th:value="*{contrasenya}" type="password" name="contrasenya" id="contrasenya">
 					</div>
 	
 					<div class="col-4 d-flex justify-content-center flex-column">
@@ -68,7 +68,7 @@
 				<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
 					
 					<div class="col-7 d-flex justify-content-center flex-column">
-						<label for="nombreAlumno">Nombre completo</label><input th:field="*{nombre}" type="text" name="nombreAlumno" id="nombreAlumno">
+						<label for="nombreAlumno">Nombre completo</label><input th:field="*{nombre}" th:value="*{nombre}" type="text" name="nombreAlumno" id="nombreAlumno">
 					</div>
 					<!-- 
 					<div class="col-4 offset-2 d-flex justify-content-center flex-column">
@@ -77,7 +77,7 @@
 					 -->
 	
 					<div class="col-5 d-flex justify-content-center flex-column">
-						<label for="nacimientoAlumno">Fecha de nacimiento</label><input th:field="*{fechaNacimiento}"  type="date" name="nacimientoAlumno" id="nacimientoAlumno">
+						<label for="nacimientoAlumno">Fecha de nacimiento</label><input th:field="*{fechaNacimiento}" th:value="*{fechaNacimiento}"  type="date" name="nacimientoAlumno" id="nacimientoAlumno">
 					</div>
 	
 				</div>
@@ -85,10 +85,10 @@
 				<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
 					
 					<div class="col-6 d-flex justify-content-center flex-column">
-						<label for="emailAlumno">Email</label><input th:field="*{email}" type="text" name="emailAlumno" id="emailAlumno">
+						<label for="emailAlumno">Email</label><input th:field="*{email}" th:value="*{email}" type="text" name="emailAlumno" id="emailAlumno">
 					</div>
 					<div class="col-6 d-flex justify-content-center flex-column">
-						<label for="direccionAlumno">Dirección</label><input th:field="*{direccion}" type="text" name="direccionAlumno" id="direccionAlumno">
+						<label for="direccionAlumno">Dirección</label><input th:field="*{direccion}" th:value="*{direccion}" type="text" name="direccionAlumno" id="direccionAlumno">
 					</div>
 	
 				</div>
@@ -97,7 +97,7 @@
 					
 					<div class="col-4 d-flex justify-content-center flex-column">
 						<label for="gradoAlumno">Grado</label>
-						<select required="required" th:field="*{gradoCursado}" name="gradoAlumno" id="gradoAlumno" form="alumnoModificarPerfil">
+						<select required="required" th:field="*{gradoCursado}" th:value="*{gradoCursado}" name="gradoAlumno" id="gradoAlumno" form="alumnoModificarPerfil">
 							
 							<option value="GestionAdministrativa">Gestión Administrativa</option>
 							<option value="ActividadesComerciales">Actividades Comerciales</option>
@@ -110,11 +110,11 @@
 						</select>
 					</div>
 					<div class="col-4 d-flex justify-content-center flex-column">
-						<label for="fechaInicioGradoAlumno">Inicio</label><input th:field="*{fechaInicioGrado}" type="date" name="fechaInicioGradoAlumno" id="fechaInicioGradoAlumno">
+						<label for="fechaInicioGradoAlumno">Inicio</label><input th:field="*{fechaInicioGrado}" th:value="*{fechaInicioGrado}" type="date" name="fechaInicioGradoAlumno" id="fechaInicioGradoAlumno">
 					</div>
 	
 					<div class="col-4 d-flex justify-content-center flex-column">
-						<label for="fechaFinGradoAlumno">Fin</label><input th:field="*{fechaFinGrado}" type="date" name="fechaFinGradoAlumno" id="fechaFinGradoAlumno">
+						<label for="fechaFinGradoAlumno">Fin</label><input th:field="*{fechaFinGrado}" th:value="*{fechaFinGrado}" type="date" name="fechaFinGradoAlumno" id="fechaFinGradoAlumno">
 					</div>
 	
 				</div>

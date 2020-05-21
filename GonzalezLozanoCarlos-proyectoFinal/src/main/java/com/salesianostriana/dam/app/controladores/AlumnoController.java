@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Anuncio;
 import com.salesianostriana.dam.app.entidades.Empresa;
-import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.servicios.AlumnoServicio;
 import com.salesianostriana.dam.app.servicios.AnuncioServicio;
 import com.salesianostriana.dam.app.servicios.EmpresaServicio;
@@ -98,6 +97,7 @@ public class AlumnoController {
 	@GetMapping("/alumno/alumnoModificarPerfil")
 	public String  accesoRegistroAlumno(Model model, @AuthenticationPrincipal Alumno alumno) {		
 		model.addAttribute("alumnoForm", alumno);
+		
 		return "/alumno/alumnoModificarPerfil";
 	}
 	
@@ -106,7 +106,7 @@ public class AlumnoController {
 //		usuarioServicio.save(alumno);
 		//model.addAttribute("alumno", alumno);
 		
-		usuarioServicio.editar(alumno, al);
+		usuarioServicio.editar(alumno, al, passwordEncoder);
 		usuarioServicio.edit(al);
 		
 		return accesoPerfilAlumno(al ,  model)/*"alumnoVisualizacionPerfilAlumno"*/;
