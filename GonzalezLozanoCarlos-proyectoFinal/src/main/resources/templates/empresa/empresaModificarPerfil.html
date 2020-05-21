@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="utf-8">
+	<title>ModificarPerfilEmpresa</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	
+	<link th:replace="~{fragments/linkEstilos::linkEstilos}" rel="stylesheet" type="text/css" href="../css/estilos.css">
+
+
+</head>
+<body>
+
+	<div th:replace="~{fragments/banner::banner}" class="container-fluid px-0">
+		
+	</div>
+
+	
+
+	<div th:replace="~{fragments/menuEmpresaPerfil::menuEmpresaPerfil}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
+		
+		
+
+	</div>
+
+
+	<div class="col-12 bg-dark container-fluid cuerpoInicio" >
+		
+		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column container-fluid cuerpoInicio ">
+			
+			<form method="POST" th:action="empresaModificarPerfil" th:object="${empresaForm}" class="col-12 container-fluid   d-flex justify-content-center flex-column mx-0 px-0 d-flex justify-content-center flex-column ">
+			
+				<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
+					
+					<div class="col-4 d-flex justify-content-center flex-column">
+						<label for="nombreAlumno">Nick</label><input th:field="*{nick}" th:value="*{nick}" type="text" name="nick" id="nick">
+					</div>
+					<div class="col-4 d-flex justify-content-center flex-column">
+						<label for="contrasenya">Contraseña</label><input th_field="*{contrasenya}" th:value="*{contrasenya}" type="password" name="contrasenya" id="contrasenya">
+					</div>
+	
+					<div class="col-4 d-flex justify-content-center flex-column">
+						<label for="nacimientoAlumno">Repite la contraseña</label><input type="password" name="contrasenyaRepe" id="contrasenyaRepe">
+					</div>
+	
+				</div>
+	
+				<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
+					
+					<div class="col-6 d-flex justify-content-center flex-column">
+						<label for="nombreEmpresa">Nombre</label><input th:field="*{nombre}" th:value="*{nombre}" type="text" name="nombreEmpresa" id="nombreEmpresa">
+					</div>
+					<div class="col-6 d-flex justify-content-center flex-column">
+						<label for="nombreSector">Sector</label><input th:field="*{sector}" th:value="*{sector}" type="text" name="nombreSector" id="nombreSector">
+					</div>
+	
+				</div>
+	
+	
+				<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL2">
+					<div class="col-6 d-flex justify-content-center flex-column">
+						<label for="cifEmpresa">CIF</label><input th:field="*{cif}" th:value="*{cif}" type="text" name="cifEmpresa" id="cifEmpresa">
+					</div>
+					<div class="col-6 d-flex justify-content-center flex-column">
+						<label for="telefonoEmpresa">Télefono</label><input th:field="*{telefono}" th:value="*{telefono}" type="text" name="telefonoEmpresa" id="telefonoEmpresa">
+					</div>
+				</div>
+	
+	
+				<div class="my-1 col-12 container-fluid">
+					
+					<div class="col-10 offset-1 d-flex justify-content-center flex-column">
+						<label for="emailEmpresa">Email</label><input th:field="*{email}" th:value="*{email}" type="email" name="emailEmpresa" id="emailEmpresa">
+					</div>
+	
+				</div>
+	
+	
+				<div class="my-1 col-12">
+	
+					<div class="col-10 offset-1 d-flex justify-content-center flex-column">
+						<label for="direccionEmpresa">Dirección</label><input th:field="*{direccion}" th:value="*{direccion}" type="text" name="direccionEmpresa" id="direccionEmpresa">
+					</div>
+	
+				</div>
+	
+	
+				<div class="col-12 d-flex justify-content-center my-4">
+					<input type="submit" name="envioFormRegEmpresa" id="envioFormRegEmpresa">
+				</div>
+	
+			</form>
+
+			
+			
+
+		</div>
+
+	</div>
+
+
+
+	<div th:replace="~{fragments/footer::footer}" class="container-fluid px-0">
+		
+	</div>
+
+	<script type="text/javascript">
+		
+	</script>
+
+</body>
+</html>

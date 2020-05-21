@@ -16,6 +16,7 @@ import com.salesianostriana.dam.app.entidades.Anuncio;
 import com.salesianostriana.dam.app.entidades.Empresa;
 import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.servicios.AlumnoServicio;
+import com.salesianostriana.dam.app.servicios.AministradorServicio;
 import com.salesianostriana.dam.app.servicios.AnuncioServicio;
 import com.salesianostriana.dam.app.servicios.EmpresaServicio;
 import com.salesianostriana.dam.app.servicios.UsuarioServicio;
@@ -34,6 +35,9 @@ public class AdminController {
 	
 	@Autowired
 	private UsuarioServicio usuarioServicio;
+	
+	@Autowired
+	private AministradorServicio administradorServicio;
 	
 	
 	
@@ -151,6 +155,24 @@ public class AdminController {
 //		Usuario emp=usuarioServicio.findById(id);
 		usuarioServicio.deleteById(id);
 		return accesoVisualizacionEmpresas(model);
+	}
+	
+	//----------------------------------------------------------------------------------------------------
+	//Modificar anuncio
+	@GetMapping("/admin/adminModificarAnuncio/{id}")
+	public String accesoModificarAnuncio(Model model, @PathVariable Long id) {
+//		Anuncio anun=new Anuncio();
+//		anun=anuncioServicio.findById(id);
+		model.addAttribute("anuncioForm", anuncioServicio.findById(id));
+		return "/admin/adminModificarAnuncio";
+	}
+	
+	@PostMapping("/admin/adminModificarAnuncio/{id}")
+	public String procesarModificarAnuncio(@ModelAttribute("anuncioForm")Anuncio anuncio, Model model, @PathVariable Long id) {
+		
+		administradorServicio.editarAnuncio(anuncio, anuncioServicio.findById(anuncio.getId()));
+		anuncioServicio.edit(anuncioServicio.findById(anuncio.getId()));
+		return accesoVisualizacionPerfilAnuncio( model, id);
 	}
 	
 	

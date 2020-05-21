@@ -29,34 +29,9 @@ public class UsuarioServicio extends BaseService<Usuario, Long, UsuarioRepositor
 		return super.save(t);
 	}
 	
-	public void editar(Usuario t, @AuthenticationPrincipal Alumno al,BCryptPasswordEncoder passwordEncoder) {
-		al.setNick(t.getNick());
-		
-		
-//		al.setContrasenya(passwordEncoder.encode(t.getContrasenya()));
-		if(!al.getContrasenya().equals(t.getContrasenya())) {
-			al.setContrasenya(passwordEncoder.encode(t.getContrasenya()));
-		}
-		
-		
-		al.setNombre(((Alumno)t).getNombre());
-		al.setFechaNacimiento(((Alumno)t).getFechaNacimiento());
-		al.setDireccion(((Alumno)t).getDireccion());
-		al.setEmail(((Alumno)t).getEmail());
-		al.setGradoCursado(((Alumno)t).getGradoCursado());
-		al.setFechaInicioGrado(((Alumno)t).getFechaInicioGrado());
-		al.setFechaFinGrado(((Alumno)t).getFechaFinGrado());
-//		edit(al);
-		
-		
-		
-	}
 	
-	/*
-	public void saveUser(Usuario u) {
-		repositorio.save(u);
-	}
-	*/
+	
+	
 	
 	
 	

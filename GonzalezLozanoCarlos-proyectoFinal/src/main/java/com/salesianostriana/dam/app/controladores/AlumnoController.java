@@ -95,7 +95,7 @@ public class AlumnoController {
 	//----------------------------------------------------------
 	//Modificar perfil
 	@GetMapping("/alumno/alumnoModificarPerfil")
-	public String  accesoRegistroAlumno(Model model, @AuthenticationPrincipal Alumno alumno) {		
+	public String  accesoEdicionAlumno(Model model, @AuthenticationPrincipal Alumno alumno) {		
 		model.addAttribute("alumnoForm", alumno);
 		
 		return "/alumno/alumnoModificarPerfil";
@@ -103,20 +103,15 @@ public class AlumnoController {
 	
 	@PostMapping("/alumno/alumnoEditPerfil")
 	public String procesarAlumnoModificarPerfil( @AuthenticationPrincipal Alumno al, @ModelAttribute("alumnoForm")Alumno alumno, Model model,BCryptPasswordEncoder passwordEncoder  ) {
-//		usuarioServicio.save(alumno);
-		//model.addAttribute("alumno", alumno);
+
 		
-		usuarioServicio.editar(alumno, al, passwordEncoder);
-		usuarioServicio.edit(al);
+		alumnoServicio.editar(alumno, al, passwordEncoder);
+		alumnoServicio.edit(al);
 		
 		return accesoPerfilAlumno(al ,  model)/*"alumnoVisualizacionPerfilAlumno"*/;
 	}
 	
-//	@GetMapping("/alumno/alumnoVisualizacionPerfilAlumno")
-//	public String aaccesoPerfilAlumno(@AuthenticationPrincipal Alumno alumno, Model model) {
-//		model.addAttribute("alumno", alumno);
-//		return "/alumno/alumnoVisualizacionPerfilAlumno";
-//	}
+
 	
 	
 	
