@@ -47,7 +47,7 @@
 				<div class="col-4 h3">Sus Datos</div>
 				<div class="col-1">
 
-					<img src="/imgs/iconoEngranaje.jpg" class="icono iconoMostrado"></a>
+					<a th:href="@{/admin/adminModificarAlumno/{id}(id=${alumno.id})}"><img src="/imgs/iconoEngranaje.jpg" class="icono iconoMostrado"></a>
 					<a th:href="@{/admin/adminEliminarAlumno/{id}(id=${alumno.id})}"><img src="/imgs/eliminar.jpg" class="icono my-1 iconoMostrado" ></a>
 					<!-- <img src="/imgs/deshacer.png" class="icono my-1 iconoOculto" > -->
 

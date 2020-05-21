@@ -175,6 +175,39 @@ public class AdminController {
 		return accesoVisualizacionPerfilAnuncio( model, id);
 	}
 	
+	//--------------------------------------------------------------------------------------------------------
+	//Modificar alumno
+	@GetMapping("/admin/adminModificarAlumno/{id}")
+	public String accederModificaralumno(Model model, @PathVariable Long id) {
+		model.addAttribute("alumnoForm", usuarioServicio.findById(id));
+		return "/admin/adminModificarAlumno";
+		
+	}
+	
+	@PostMapping("/admin/adminModificarAlumno/{id}")
+	public String procesarModificarAlumno(@ModelAttribute("alumnoForm")Alumno alumno, Model  model, @PathVariable Long id, BCryptPasswordEncoder passwordEncoder) {
+		administradorServicio.editarAlumno(alumno, alumnoServicio.findById(id), passwordEncoder);
+		usuarioServicio.edit(alumnoServicio.findById(id));
+		return accesoVisualizacionPerfilAlumno( model,   id);
+	}
+	
+	//------------------------------------------------------------------------------------------------------
+	//modifica empresa
+	@GetMapping("/admin/adminModificarEmpresa/{id}")
+	public String accesoModificarEmpresa(Model model, @PathVariable Long id) {
+		model.addAttribute("empresaForm", usuarioServicio.findById(id));
+		return "/admin/adminModificarEmpresa";
+		
+	}
+	
+	@PostMapping("/admin/adminModificarEmpresa/{id}")
+	public String procesarModificarEmpresa(@ModelAttribute("empresaForm")Empresa empresa, @PathVariable Long id, Model model, BCryptPasswordEncoder passwordEncoder) {
+		administradorServicio.editarEmpresa(empresa, empresaServicio.findById(id), passwordEncoder);
+		usuarioServicio.edit(empresaServicio.findById(id));
+		
+		return accesoVisualizacionPerfilEmpresa( model,   id);
+	}
+	
 	
 	
 	
