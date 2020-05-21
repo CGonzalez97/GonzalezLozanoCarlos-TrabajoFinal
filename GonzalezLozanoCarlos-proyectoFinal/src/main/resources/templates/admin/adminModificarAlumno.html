@@ -44,7 +44,7 @@
 		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column   align-items-center cuerpoInicio">
 		
 		
-			<form  method="POST" th:action="@{/admin/adminModificarAlumno/{id}(id=${alumnoForm.id})}"  th:object="${alumnoForm}"    class="col-12 container-fluid   d-flex justify-content-center flex-column mx-0 px-0 d-flex justify-content-center flex-column " name="adminModificarAlumno" id="adminModificarAlumno">
+			<form  onsubmit="return envio()"  method="POST" th:action="@{/admin/adminModificarAlumno/{id}(id=${alumnoForm.id})}"  th:object="${alumnoForm}"    class="col-12 container-fluid   d-flex justify-content-center flex-column mx-0 px-0 d-flex justify-content-center flex-column " name="adminModificarAlumno" id="adminModificarAlumno">
 			  
 				<div class="my-1 col-10 offset-1 container-fluid d-flex justify-content-center flex-row" id="formularioRegEmpresaL1">
 					
@@ -52,11 +52,11 @@
 						<label for="nombreAlumno">Nick</label><input th:field="*{nick}" th:value="*{nick}" type="text" name="nick" id="nick">
 					</div>
 					<div class="col-4 d-flex justify-content-center flex-column">
-						<label for="apellidosAlumno">Contraseña</label><input  th:value="*{contrasenya}" type="password" name="contrasenya" id="contrasenya">
+						<label for="contrasenya">Contraseña</label><input  th:value="*{contrasenya}" type="password" name="contrasenya" id="contrasenya">
 					</div>
 	
 					<div class="col-4 d-flex justify-content-center flex-column">
-						<label for="nacimientoAlumno">Repite la contraseña</label><input type="password" name="contrasenyaRepe" id=""contrasenyaRepe"">
+						<label for="contrasenyaRepe">Repite la contraseña</label><input th:value="*{contrasenya}" type="password" name="contrasenyaRepe" id="contrasenyaRepe">
 					</div>
 	
 				</div>
@@ -107,11 +107,11 @@
 						</select>
 					</div>
 					<div class="col-4 d-flex justify-content-center flex-column">
-						<label for="fechaInicioGradoAlumno">Inicio</label><input th:field="*{fechaInicioGrado}" th:value="*{fechaInicioGrado}" type="date" name="fechaInicioGradoAlumno" id="fechaInicioGradoAlumno">
+						<label for="fechaInicioGrado">Inicio</label><input th:field="*{fechaInicioGrado}" th:value="*{fechaInicioGrado}" type="date" name="fechaInicioGrado" id="fechaInicioGrado">
 					</div>
 	
 					<div class="col-4 d-flex justify-content-center flex-column">
-						<label for="fechaFinGradoAlumno">Fin</label><input th:field="*{fechaFinGrado}" th:value="*{fechaFinGrado}" type="date" name="fechaFinGradoAlumno" id="fechaFinGradoAlumno">
+						<label for="fechaFinGrado">Fin</label><input th:field="*{fechaFinGrado}" th:value="*{fechaFinGrado}" type="date" name="fechaFinGrado" id="fechaFinGrado">
 					</div>
 	
 				</div>
@@ -137,7 +137,7 @@
 		
 	</div>
 
-	<script type="text/javascript">
+	<script th:replace="~{fragments/javaScriptFormularioAlumno::javaScriptFormularioAlumno}" type="text/javascript">
 		
 	</script>
 

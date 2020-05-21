@@ -122,6 +122,7 @@ function envio(){
 window.onload= function(){
 	
 	document.getElementById('fechaNacimiento').onblur=comprobarEdad;
+	document.getElementById('contrasenya').onblur=comprobarContrasenya;
 	document.getElementById('contrasenyaRepe').onblur=comprobarContrasenya;
 	document.getElementById('fechaFinGrado').onblur=comprobarFechas;
 	document.getElementById('fechaInicioGrado').onblur=comprobarFechas;
