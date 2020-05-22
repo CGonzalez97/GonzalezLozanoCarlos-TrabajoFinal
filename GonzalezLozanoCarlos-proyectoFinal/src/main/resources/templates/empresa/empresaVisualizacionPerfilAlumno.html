@@ -54,6 +54,14 @@
 					<tr><td>Fecha de Nacimiento</td><td th:text="${alumno.fechaNacimiento}">fechaNacimiento</td></tr>
 				</table>
 			</div>
+			
+			<div class="col-10 my-4 d-flex justify-content-center">
+				<form method="POST" th:action="@{/empresa/empresaMandarMensajeDesdePerfil/{id}(id=${alumno.id})}"  th:object="${mensajeForm}">
+									
+					<input th:field="*{contenido}" type="text" name="contenido" id="contenido" size="90" maxlength="400">
+					<input type="submit" name="envioMensaje" id="envioMensaje">
+				</form>
+			</div>
 
 			
 

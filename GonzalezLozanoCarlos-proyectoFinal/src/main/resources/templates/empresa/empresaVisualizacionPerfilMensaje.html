@@ -55,8 +55,9 @@
 			<div class="col-8  my-4 contenidoMensaje" id="contenidoMensaje" th:text="${mensaje.contenido}">Contenido</div>
 
 			<div class="col-10 my-4 d-flex justify-content-center">
-				<form >
-					<input type="text" name="respuesta" id="respuesta" size="90" maxlength="400">
+				<form method="POST" th:action="@{/empresa/empresaMandarMensajeDesdeMensaje/{id}(id=${mensaje.remitente.id})}"  th:object="${mensajeForm}">
+									
+					<input th:field="*{contenido}" type="text" name="contenido" id="contenido" size="90" maxlength="400">
 					<input type="submit" name="envioMensaje" id="envioMensaje">
 				</form>
 			</div>

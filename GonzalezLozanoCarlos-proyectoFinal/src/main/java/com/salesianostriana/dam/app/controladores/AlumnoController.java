@@ -134,9 +134,7 @@ public class AlumnoController {
 	@GetMapping("/alumno/alumnoVisualizacionPerfilMensajeEnviado/{id}")
 	public String alumnoAccederPerfilMensajeEnviado(Model model, @PathVariable Long id) {
 		model.addAttribute("mensaje", mensajeServicio.findById(id));
-		Mensaje men=new Mensaje();
-		model.addAttribute("mensajeForm", men);
-		return "/alumno/alumnoVisualizacionPerfilMensaje";
+		return "/alumno/alumnoVisualizacionPerfilMensajeEnviado";
 	}
 
 	
@@ -159,7 +157,7 @@ public class AlumnoController {
 		mensajeServicio.setearMensaje(alumno, usuarioServicio.findById(id), men, mensaje);
 		usuarioServicio.edit(alumno);
 		usuarioServicio.edit(usuarioServicio.findById(id));
-		return  alumnoAccederPerfilMensaje( model,   men.getId());//-----------
+		return  alumnoAccederPerfilMensajeEnviado( model,   men.getId());//-----------
 	}
 	
 	

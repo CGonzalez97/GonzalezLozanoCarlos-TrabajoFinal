@@ -48,7 +48,7 @@
 				<tr><th>Enviados</th></tr>
 				<tr th:each="mensaje:${enviados}" class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3">
 					<td >Para</td>
-					<td class="h2"><a th:text="${mensaje.destinatario.nombre}" th:href="@{/empresa/empresaVisualizacionPerfilMensaje/{id}(id=${mensaje.id})}" class="text-dark text-decoration-none">Destinatario</a></td>
+					<td class="h2"><a th:text="${mensaje.destinatario.nombre}" th:href="@{/empresa/empresaVisualizacionPerfilMensajeEnviado/{id}(id=${mensaje.id})}" class="text-dark text-decoration-none">Destinatario</a></td>
 					<td th:text="${mensaje.fechaEnvio}">FechaEnvio</td>
 				</tr>
 				

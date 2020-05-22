@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Empresa;
+import com.salesianostriana.dam.app.entidades.Mensaje;
 import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.servicios.AlumnoServicio;
 import com.salesianostriana.dam.app.servicios.AnuncioServicio;
@@ -66,6 +67,8 @@ public class EmpresaController {
 	public String accesoVisualizacionPerfilAlumno(Model model, @PathVariable Long id) {
 		Alumno al=alumnoServicio.findById(id);
 		model.addAttribute("alumno", al);
+		Mensaje men=new Mensaje();
+		model.addAttribute("mensajeForm", men);
 		return "empresa/empresaVisualizacionPerfilAlumno";
 	}
 	
@@ -125,9 +128,40 @@ public class EmpresaController {
 	@GetMapping("/empresa/empresaVisualizacionPerfilMensaje/{id}")
 	public String empresaAccederPerfilMensaje(Model model, @PathVariable Long id) {
 		model.addAttribute("mensaje", mensajeServicio.findById(id));
-		return "/empresa/empresaVisualizacionPerfilMensaje";
+		Mensaje men=new Mensaje();
+		model.addAttribute("mensajeForm", men);
+		return "/empresa/empresaVisualizacionPerfilMensaje";	
+	}
+	
+	
+	@GetMapping("/empresa/empresaVisualizacionPerfilMensajeEnviado/{id}")
+	public String empresaAccederPerfilMensajeEnviado(Model model, @PathVariable Long id) {
+		model.addAttribute("mensaje", mensajeServicio.findById(id));
+		return "/empresa/empresaVisualizacionPerfilMensajeEnviado";
 		
 	}
+	
+	//EnviarMensajeDesdePerfilAlumno
+	@PostMapping("/empresa/empresaMandarMensajeDesdePerfil/{id}")
+	public String mandarMensajeDesdePerfil(Model model, @ModelAttribute("mensajeForm")Mensaje mensaje, @AuthenticationPrincipal Usuario empresa, @PathVariable Long id) {
+		Mensaje men=new Mensaje();
+		mensajeServicio.setearMensaje(empresa, usuarioServicio.findById(id), men, mensaje);
+		usuarioServicio.edit(empresa);
+		usuarioServicio.edit(usuarioServicio.findById(id));
+		return accesoVisualizacionPerfilAlumno( model,   id);
+	}
+	
+	//EnviarMensajeDesdePerfilMensaje
+	@PostMapping("/empresa/empresaMandarMensajeDesdeMensaje/{id}")
+	public String mandarMensajeDesdeMensaje(Model model, @ModelAttribute("mensajeForm")Mensaje mensaje, @AuthenticationPrincipal Usuario empresa, @PathVariable Long id) {
+		Mensaje men=new Mensaje();
+		mensajeServicio.setearMensaje(empresa, usuarioServicio.findById(id), men, mensaje);
+		usuarioServicio.edit(empresa);
+		usuarioServicio.edit(usuarioServicio.findById(id));
+		return empresaAccederPerfilMensajeEnviado( model,   men.getId());
+	}
+	
+	
 	
 	
 	
