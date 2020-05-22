@@ -2,6 +2,7 @@ package com.salesianostriana.dam.app.entidades;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,8 +12,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
@@ -40,12 +39,12 @@ public abstract class Usuario  implements UserDetails {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="destinatario")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="destinatario", cascade = CascadeType.REMOVE)
 	private List<Mensaje> recibidos;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="remitente")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="remitente", cascade = CascadeType.REMOVE)
 	private List<Mensaje> enviados;
 	
 	

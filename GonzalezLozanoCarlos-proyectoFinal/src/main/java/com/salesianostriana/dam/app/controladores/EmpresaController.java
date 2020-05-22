@@ -109,7 +109,7 @@ public class EmpresaController {
 	@PostMapping("/empresa/empresaModificarPerfil")
 	public String procesarModificarPerfil(@AuthenticationPrincipal Empresa empresa,Model model, @ModelAttribute("empresaForm") Empresa emp, BCryptPasswordEncoder passwordEncoder) {
 		empresaServicio.editar(emp, empresa, passwordEncoder);
-		empresaServicio.edit(empresa);
+//		empresaServicio.edit(empresa);
 		return accesoVisualizacionPerfilEmpresa( empresa,  model);
 	}
 		
@@ -144,21 +144,23 @@ public class EmpresaController {
 	//EnviarMensajeDesdePerfilAlumno
 	@PostMapping("/empresa/empresaMandarMensajeDesdePerfil/{id}")
 	public String mandarMensajeDesdePerfil(Model model, @ModelAttribute("mensajeForm")Mensaje mensaje, @AuthenticationPrincipal Usuario empresa, @PathVariable Long id) {
-		Mensaje men=new Mensaje();
-		mensajeServicio.setearMensaje(empresa, usuarioServicio.findById(id), men, mensaje);
-		usuarioServicio.edit(empresa);
-		usuarioServicio.edit(usuarioServicio.findById(id));
+//		Mensaje men=new Mensaje();
+//		mensajeServicio.setearMensaje(empresa, usuarioServicio.findById(id), men, mensaje);
+//		usuarioServicio.edit(empresa);
+//		usuarioServicio.edit(usuarioServicio.findById(id));
+		empresaServicio.mandarMensajeDesdePerfil(empresa, id, mensaje, usuarioServicio, mensajeServicio);
 		return accesoVisualizacionPerfilAlumno( model,   id);
 	}
 	
 	//EnviarMensajeDesdePerfilMensaje
 	@PostMapping("/empresa/empresaMandarMensajeDesdeMensaje/{id}")
 	public String mandarMensajeDesdeMensaje(Model model, @ModelAttribute("mensajeForm")Mensaje mensaje, @AuthenticationPrincipal Usuario empresa, @PathVariable Long id) {
-		Mensaje men=new Mensaje();
-		mensajeServicio.setearMensaje(empresa, usuarioServicio.findById(id), men, mensaje);
-		usuarioServicio.edit(empresa);
-		usuarioServicio.edit(usuarioServicio.findById(id));
-		return empresaAccederPerfilMensajeEnviado( model,   men.getId());
+//		Mensaje men=new Mensaje();
+//		mensajeServicio.setearMensaje(empresa, usuarioServicio.findById(id), men, mensaje);
+//		usuarioServicio.edit(empresa);
+//		usuarioServicio.edit(usuarioServicio.findById(id));
+		Long num=empresaServicio.mandarMensajeDesdeMensaje(empresa, id, mensaje, usuarioServicio, mensajeServicio);
+		return empresaAccederPerfilMensajeEnviado( model,   num);
 	}
 	
 	

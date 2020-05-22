@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.app.servicios;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import java.util.ArrayList;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ import com.salesianostriana.dam.app.entidades.Administrador;
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Anuncio;
 import com.salesianostriana.dam.app.entidades.Empresa;
+import com.salesianostriana.dam.app.entidades.Mensaje;
 import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.repositorios.AdministradorRepository;
 
@@ -62,9 +64,34 @@ public class AministradorServicio extends BaseService<Administrador, Long, Admin
 		emp.setEmail(empresa.getEmail());
 		emp.setTelefono(empresa.getTelefono());
 		emp.setDireccion(empresa.getDireccion());
+	
+	}
+	
+	//crear anuncio
+	public void crearAnuncio(Usuario admin  , Anuncio anuncio, AnuncioServicio anuncioServicio) {
 		
 		
-
+		admin=findById(admin.getId());
+		((Administrador)admin).addAnuncio(anuncio);
+		
+		anuncioServicio.save(anuncio);
+		
+	}
+	
+	//crear alumno
+	public void crearAlumno(Alumno alumno, BCryptPasswordEncoder passwordEncoder, UsuarioServicio usuarioServicio) {
+		alumno.setRecibidos(new ArrayList<Mensaje>());
+		alumno.setEnviados(new ArrayList<Mensaje>());
+		usuarioServicio.save(alumno,passwordEncoder);
+		
+	}
+	
+	//crear empresa
+	public void crearEmpresa(Empresa empresa, BCryptPasswordEncoder passwordEncoder, UsuarioServicio usuarioServicio) {
+		empresa.setRecibidos(new ArrayList<Mensaje>());
+		empresa.setEnviados(new ArrayList<Mensaje>());
+		usuarioServicio.save(empresa,passwordEncoder);
+		
 	}
 	
 	

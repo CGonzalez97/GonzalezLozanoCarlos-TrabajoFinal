@@ -107,7 +107,7 @@ public class AlumnoController {
 
 		
 		alumnoServicio.editar(alumno, al, passwordEncoder);
-		alumnoServicio.edit(al);
+//		alumnoServicio.edit(al);
 		
 		return accesoPerfilAlumno(al ,  model)/*"alumnoVisualizacionPerfilAlumno"*/;
 	}
@@ -142,10 +142,11 @@ public class AlumnoController {
 	//MandarMensajeDesdePerfilEmpresa
 	@PostMapping("/alumno/alumnoMandarMensajeDesdePerfil/{id}")
 	public String mandarMensajeDesdePerfil( @ModelAttribute("mensajeForm")Mensaje mensaje , @AuthenticationPrincipal Usuario alumno, Model model, @PathVariable Long id) {
-		Mensaje men=new Mensaje();
-		mensajeServicio.setearMensaje(alumno, usuarioServicio.findById(id), men, mensaje);
-		usuarioServicio.edit(alumno);
-		usuarioServicio.edit(usuarioServicio.findById(id));
+//		Mensaje men=new Mensaje();
+//		mensajeServicio.setearMensaje(alumno, usuarioServicio.findById(id), men, mensaje);
+//		usuarioServicio.edit(alumno);
+//		usuarioServicio.edit(usuarioServicio.findById(id));
+		alumnoServicio.mandarMensajeDesdePerfil(alumno, id, mensaje, usuarioServicio, mensajeServicio);
 		return accesoPerfilEmpresa( model,   id);
 	}
 	
@@ -153,11 +154,12 @@ public class AlumnoController {
 	
 	@PostMapping("/alumno/alumnoMandarMensajeDesdeMensaje/{id}")
 	public String mandarMensajeDesdeMensaje(Model model, @ModelAttribute("mensajeForm")Mensaje mensaje, @AuthenticationPrincipal Usuario alumno, @PathVariable Long id) {
-		Mensaje men=new Mensaje();
-		mensajeServicio.setearMensaje(alumno, usuarioServicio.findById(id), men, mensaje);
-		usuarioServicio.edit(alumno);
-		usuarioServicio.edit(usuarioServicio.findById(id));
-		return  alumnoAccederPerfilMensajeEnviado( model,   men.getId());//-----------
+//		Mensaje men=new Mensaje();
+//		mensajeServicio.setearMensaje(alumno, usuarioServicio.findById(id), men, mensaje);
+//		usuarioServicio.edit(alumno);
+//		usuarioServicio.edit(usuarioServicio.findById(id));
+		Long num=alumnoServicio.mandarMensajeDesdeMensaje(alumno, id, mensaje, usuarioServicio, mensajeServicio);
+		return  alumnoAccederPerfilMensajeEnviado( model,   num);//-----------
 	}
 	
 	

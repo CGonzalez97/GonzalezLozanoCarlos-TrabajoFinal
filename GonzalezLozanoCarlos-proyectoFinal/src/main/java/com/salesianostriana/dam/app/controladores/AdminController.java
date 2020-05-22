@@ -97,8 +97,10 @@ public class AdminController {
 	
 	@PostMapping("/admin/adminAddAnuncio")
 	public String procesamientoAddAnuncio(@ModelAttribute("anuncioForm") Anuncio anuncio, Model model, @AuthenticationPrincipal Usuario admin) {
-		((Administrador)admin).addAnuncio(anuncio);
-		anuncioServicio.save(anuncio);
+//		((Administrador)admin).addAnuncio(anuncio);
+//		anuncioServicio.save(anuncio);
+//		admin=administradorServicio.findById(admin.getId());
+		administradorServicio.crearAnuncio(admin, anuncio, anuncioServicio);
 		return accesoVisualizacionAnuncios(model)/*"/admin/adminVisualizacionAnuncios"*/;
 	}
 	
@@ -114,9 +116,10 @@ public class AdminController {
 	@PostMapping("/admin/adminAddAlumno")
 	public String procesarAddAlumno(@ModelAttribute("alumnoForm") Alumno alumno,Model model, BCryptPasswordEncoder passwordEncoder) {
 //		alumno.setContrasenya(passwordEncoder.encode(alumno.getContrasenya()));
-		alumno.setRecibidos(new ArrayList<Mensaje>());
-		alumno.setEnviados(new ArrayList<Mensaje>());
-		usuarioServicio.save(alumno,passwordEncoder);
+//		alumno.setRecibidos(new ArrayList<Mensaje>());
+//		alumno.setEnviados(new ArrayList<Mensaje>());
+//		usuarioServicio.save(alumno,passwordEncoder);
+		administradorServicio.crearAlumno(alumno, passwordEncoder, usuarioServicio);
 		return accesoVisualizacionAlumnos( model);
 	}
 	
@@ -132,10 +135,10 @@ public class AdminController {
 	
 	@PostMapping("/admin/adminAddEmpresa")
 	public String procesarAdminAddEmpresa(Model model, @ModelAttribute("empresaForm") Empresa empresa, BCryptPasswordEncoder passwordEncoder) {
-//		empresa.setContrasenya(passwordEncoder.encode(empresa.getContrasenya()));
-		empresa.setRecibidos(new ArrayList<Mensaje>());
-		empresa.setEnviados(new ArrayList<Mensaje>());
-		usuarioServicio.save(empresa,passwordEncoder);
+//		empresa.setRecibidos(new ArrayList<Mensaje>());
+//		empresa.setEnviados(new ArrayList<Mensaje>());
+//		usuarioServicio.save(empresa,passwordEncoder);
+		administradorServicio.crearEmpresa(empresa, passwordEncoder, usuarioServicio);
 		return accesoVisualizacionEmpresas( model);
 	}
 	
