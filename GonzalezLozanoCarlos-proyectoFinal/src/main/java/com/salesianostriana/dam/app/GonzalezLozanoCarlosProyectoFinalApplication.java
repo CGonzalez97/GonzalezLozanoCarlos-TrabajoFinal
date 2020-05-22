@@ -13,8 +13,10 @@ import com.salesianostriana.dam.app.entidades.Administrador;
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Anuncio;
 import com.salesianostriana.dam.app.entidades.Empresa;
+import com.salesianostriana.dam.app.entidades.Mensaje;
 import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.servicios.AnuncioServicio;
+import com.salesianostriana.dam.app.servicios.MensajeServicio;
 import com.salesianostriana.dam.app.servicios.UsuarioServicio;
 
 @SpringBootApplication
@@ -27,7 +29,7 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 	
 	
 	@Bean
-	public CommandLineRunner init(AnuncioServicio anuncioServicio, UsuarioServicio servicio, BCryptPasswordEncoder passwordEncoder) {
+	public CommandLineRunner init( MensajeServicio mensajeServicio, AnuncioServicio anuncioServicio, UsuarioServicio servicio, BCryptPasswordEncoder passwordEncoder) {
 		return args -> {
 			
 			//-----------------------------------------------------------------------------
@@ -42,6 +44,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Alumno) u).setFechaNacimiento(LocalDate.now());
 			((Alumno) u).setFechaInicioGrado(LocalDate.now());
 			((Alumno) u).setFechaFinGrado(LocalDate.now());
+			u.setEnviados(new ArrayList<Mensaje>());
+			u.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(u);
 			
 			Usuario u2 = new Alumno();
@@ -54,6 +58,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Alumno) u2).setFechaNacimiento(LocalDate.now());
 			((Alumno) u2).setFechaInicioGrado(LocalDate.now());
 			((Alumno) u2).setFechaFinGrado(LocalDate.now());
+			u2.setEnviados(new ArrayList<Mensaje>());
+			u2.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(u2);
 			
 			Usuario u3 = new Alumno();
@@ -66,6 +72,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Alumno) u3).setFechaNacimiento(LocalDate.now());
 			((Alumno) u3).setFechaInicioGrado(LocalDate.now());
 			((Alumno) u3).setFechaFinGrado(LocalDate.now());
+			u3.setEnviados(new ArrayList<Mensaje>());
+			u3.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(u3);
 			
 			Usuario u4 = new Alumno();
@@ -78,6 +86,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Alumno) u4).setFechaNacimiento(LocalDate.now());
 			((Alumno) u4).setFechaInicioGrado(LocalDate.now());
 			((Alumno) u4).setFechaFinGrado(LocalDate.now());
+			u4.setEnviados(new ArrayList<Mensaje>());
+			u4.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(u4);
 			
 			Usuario u5 = new Alumno();
@@ -90,6 +100,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Alumno) u5).setFechaNacimiento(LocalDate.now());
 			((Alumno) u5).setFechaInicioGrado(LocalDate.now());
 			((Alumno) u5).setFechaFinGrado(LocalDate.now());
+			u5.setEnviados(new ArrayList<Mensaje>());
+			u5.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(u5);
 			
 			//-----------------------------------------------------------------------------
@@ -111,6 +123,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Empresa) e).setEmail("empresa1@gmail.com");
 			((Empresa) e).setTelefono("111111111");
 			((Empresa) e).setDireccion("c/empresa nº1");
+			e.setEnviados(new ArrayList<Mensaje>());
+			e.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(e);
 			
 			Usuario e2=new Empresa();
@@ -122,6 +136,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Empresa) e2).setEmail("empresa2@gmail.com");
 			((Empresa) e2).setTelefono("222222222");
 			((Empresa) e2).setDireccion("c/empresa nº2");
+			e2.setEnviados(new ArrayList<Mensaje>());
+			e2.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(e2);
 			
 			Usuario e3=new Empresa();
@@ -133,6 +149,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Empresa) e3).setEmail("empresa3@gmail.com");
 			((Empresa) e3).setTelefono("333333333");
 			((Empresa) e3).setDireccion("c/empresa nº3");
+			e3.setEnviados(new ArrayList<Mensaje>());
+			e3.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(e3);
 			
 			
@@ -146,6 +164,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Empresa) e4).setEmail("empresa4@gmail.com");
 			((Empresa) e4).setTelefono("444444444");
 			((Empresa) e4).setDireccion("c/empresa nº4");
+			e4.setEnviados(new ArrayList<Mensaje>());
+			e4.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(e4);
 			
 			Usuario e5=new Empresa();
@@ -157,6 +177,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			((Empresa) e5).setEmail("empresa5@gmail.com");
 			((Empresa) e5).setTelefono("555555555");
 			((Empresa) e5).setDireccion("c/empresa nº5");
+			e5.setEnviados(new ArrayList<Mensaje>());
+			e5.setRecibidos(new ArrayList<Mensaje>());
 			servicio.save(e5);
 			
 			//-----------------------------------------------------------------------------
@@ -166,8 +188,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			an.setDescripcion("Esta semana se llevará a cabo la campaña solidaria del Domund,"
 					+ " cada uno podrá ayudar con lo que desee.");
 			an.setFechaEvento(LocalDate.now());
-			anuncioServicio.save(an);		
 			((Administrador) a).addAnuncio(an);
+			anuncioServicio.save(an);					
 			servicio.edit(a);
 			
 			Anuncio an2=new Anuncio();
@@ -175,8 +197,8 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			an2.setDescripcion("Esta semana se llevará a cabo la campaña solidaria del Kilo,"
 					+ " estaría bien trajerais alimentos no perecederos.");
 			an2.setFechaEvento(LocalDate.now());
-			anuncioServicio.save(an2);		
 			((Administrador) a).addAnuncio(an2);
+			anuncioServicio.save(an2);		
 			servicio.edit(a);
 					
 			
@@ -184,12 +206,29 @@ public class GonzalezLozanoCarlosProyectoFinalApplication {
 			an3.setTitulo("Playbacks");
 			an3.setDescripcion("Esta semana se llevarán a cabo los playbacks 2020, reserven sus entradas.");
 			an3.setFechaEvento(LocalDate.now());
-			anuncioServicio.save(an3);		
 			((Administrador) a).addAnuncio(an3);
+			anuncioServicio.save(an3);		
 			servicio.edit(a);
 			
 			
+			//mensajes
+			Mensaje men=new Mensaje();
+			men.setContenido("Hola, adios.");
+			men.setFechaEnvio(LocalDate.now());
+			u.addRecibido(men);
+			e.addEnviado(men);
+			mensajeServicio.save(men);
+			servicio.edit(u);
+			servicio.edit(e);
 			
+			Mensaje men2=new Mensaje();
+			men2.setContenido("Mensaje enviado por alumno a empresa.");
+			men2.setFechaEnvio(LocalDate.now());
+			e.addRecibido(men2);
+			u.addEnviado(men2);
+			mensajeServicio.save(men2);
+			servicio.edit(u);
+			servicio.edit(e);
 			
 			
 			

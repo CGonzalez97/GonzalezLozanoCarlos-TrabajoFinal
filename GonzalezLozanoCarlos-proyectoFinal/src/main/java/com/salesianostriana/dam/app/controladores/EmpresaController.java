@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Empresa;
+import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.servicios.AlumnoServicio;
 import com.salesianostriana.dam.app.servicios.AnuncioServicio;
 import com.salesianostriana.dam.app.servicios.EmpresaServicio;
+import com.salesianostriana.dam.app.servicios.MensajeServicio;
 import com.salesianostriana.dam.app.servicios.UsuarioServicio;
 
 @Controller
@@ -32,6 +34,9 @@ public class EmpresaController {
 	@Autowired
 	private UsuarioServicio usuarioServicio;
 	
+	@Autowired
+	private MensajeServicio mensajeServicio;
+	
 //	@GetMapping("/empresa/empresaVisualizacionAlumnos")
 //	public String accesoVisualizacionAlumnos() {
 //		return "/empresa/empresaVisualizacionAlumnos";
@@ -44,10 +49,7 @@ public class EmpresaController {
 	}
 	
 	
-	@GetMapping("/empresa/empresaVisualizacionMensajes")
-	public String accesoVisualizacionMensajes() {
-		return "/empresa/empresaVisualizacionMensajes";
-	}
+
 	
 //	@GetMapping("/empresa/empresaVisualizacionPerfilEmpresa")
 //	public String accesoVisualizacionPerfilEmpresa() {
@@ -110,7 +112,22 @@ public class EmpresaController {
 		
 	
 	
+	//AccesoVisualizacionMensajes
+	@GetMapping("/empresa/empresaVisualizacionMensajes")
+	public String accesoVisualizacionMensajes(Model model, @AuthenticationPrincipal Usuario empresa) {
+		model.addAttribute("mensajes", usuarioServicio.findById(empresa.getId()).getRecibidos());
+		model.addAttribute("enviados", usuarioServicio.findById(empresa.getId()).getEnviados());
+		return "/empresa/empresaVisualizacionMensajes";
+	}
 	
+	//AccesoVisualizacionPerfilMensaje
+	
+	@GetMapping("/empresa/empresaVisualizacionPerfilMensaje/{id}")
+	public String empresaAccederPerfilMensaje(Model model, @PathVariable Long id) {
+		model.addAttribute("mensaje", mensajeServicio.findById(id));
+		return "/empresa/empresaVisualizacionPerfilMensaje";
+		
+	}
 	
 	
 	

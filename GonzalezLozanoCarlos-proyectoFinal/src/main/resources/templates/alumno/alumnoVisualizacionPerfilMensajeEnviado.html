@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8">
-	<title>EmpresaVisualizacionPerfilMensaje</title>
+	<title>AlumnoVisualizacionPerfilMensaje</title>
 
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -23,12 +23,12 @@
 
 	
 	
-	<div th:replace="~{fragments/menuEmpresaPerfil::menuEmpresaPerfil}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
+	<div th:replace="~{fragments/menuAlumnoPerfil::menuAlumnoPerfil}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
 		
 		<ul class="d-flex flex-row col-8 offset-2 container-fluid bg-warning text-dark my-0" >
 			<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Anuncios</div></a></li>
 			
-			<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Alumnos</div></a></li>
+			<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Empresas</div></a></li>
 
 			<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Mi perfil</a></li>
 
@@ -54,28 +54,10 @@
 
 			<div class="col-8  my-4 contenidoMensaje" id="contenidoMensaje" th:text="${mensaje.contenido}">Contenido</div>
 
-			<div class="col-10 my-4 d-flex justify-content-center">
-				<form >
-					<input type="text" name="respuesta" id="respuesta" size="90" maxlength="400">
-					<input type="submit" name="envioMensaje" id="envioMensaje">
-				</form>
-			</div>
+			
+			
+			 
 
 			
 
 		</div>
-
-	</div>
-
-
-
-	<div th:replace="~{fragments/footer::footer}" class="container-fluid px-0">
-		
-	</div>
-
-	<script type="text/javascript">
-		
-	</script>
-
-</body>
-</html>

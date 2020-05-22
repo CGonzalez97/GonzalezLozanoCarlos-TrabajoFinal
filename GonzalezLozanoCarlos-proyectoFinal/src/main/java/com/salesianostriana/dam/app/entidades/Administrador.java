@@ -26,7 +26,8 @@ public class Administrador extends Usuario {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(fetch =FetchType.EAGER, mappedBy="administrador")
+	@OneToMany(/*fetch =FetchType.EAGER,*/ mappedBy="administrador")
+	
 	private List<Anuncio> anuncios;
 	
 	public Administrador(String nick, String contrasenya, List<Mensaje> recibidos, List<Mensaje> enviados,

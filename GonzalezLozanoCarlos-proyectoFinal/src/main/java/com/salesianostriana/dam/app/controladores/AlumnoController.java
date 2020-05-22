@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Anuncio;
 import com.salesianostriana.dam.app.entidades.Empresa;
+import com.salesianostriana.dam.app.entidades.Mensaje;
+import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.servicios.AlumnoServicio;
 import com.salesianostriana.dam.app.servicios.AnuncioServicio;
 import com.salesianostriana.dam.app.servicios.EmpresaServicio;
+import com.salesianostriana.dam.app.servicios.MensajeServicio;
 import com.salesianostriana.dam.app.servicios.UsuarioServicio;
 
 @Controller
@@ -32,6 +35,9 @@ public class AlumnoController {
 	
 	@Autowired
 	private UsuarioServicio usuarioServicio;
+	
+	@Autowired
+	private MensajeServicio mensajeServicio;
 	
 	
 	
@@ -53,10 +59,6 @@ public class AlumnoController {
 		return "alumno/alumnoVisualizacionAnuncios";
 	}
 	
-//	@GetMapping("/alumno/alumnoVisualizacionEmpresas")
-//	public String accesoVisualizacionEmpresas() {
-//		return "/alumno/alumnoVisualizacionEmpresas";
-//	}
 	
 	@GetMapping("/alumno/alumnoVisualizacionEmpresas")
 	public String accesoVisualizacionEmpresas(Model model) {
@@ -64,17 +66,16 @@ public class AlumnoController {
 		return "alumno/alumnoVisualizacionEmpresas";
 	}
 	
-	@GetMapping("/alumno/alumnoVisualizacionMensajes")
-	public String accesoVisualizacionMensajes() {
-		return "/alumno/alumnoVisualizacionMensajes";
-	}
+
 	
 	
-	
+	//AccederPerfilEmpresa
 	@GetMapping("/alumno/alumnoVisualizacionPerfilEmpresa/{id}")
 	public String accesoPerfilEmpresa(Model model, @PathVariable Long id) {
 		Empresa emp=empresaServicio.findById(id);
+		Mensaje men=new Mensaje();
 		model.addAttribute("empresa", emp);
+		model.addAttribute("mensajeForm", men);
 		return "alumno/alumnoVisualizacionPerfilEmpresa";
 	}
 	
@@ -110,6 +111,57 @@ public class AlumnoController {
 		
 		return accesoPerfilAlumno(al ,  model)/*"alumnoVisualizacionPerfilAlumno"*/;
 	}
+	
+	
+	//AccesoVisualizacionMensajes
+	@GetMapping("/alumno/alumnoVisualizacionMensajes")
+	public String accesoVisualizacionMensajes(Model model, @AuthenticationPrincipal Usuario alumno) {
+		model.addAttribute("mensajes", usuarioServicio.findById(alumno.getId()).getRecibidos());
+		model.addAttribute("enviados", usuarioServicio.findById(alumno.getId()).getEnviados());
+		return "/alumno/alumnoVisualizacionMensajes";
+	}
+	
+	//AccesovisualizacionPerfilMensaje
+	
+	@GetMapping("/alumno/alumnoVisualizacionPerfilMensaje/{id}")
+	public String alumnoAccederPerfilMensaje(Model model, @PathVariable Long id) {
+		model.addAttribute("mensaje", mensajeServicio.findById(id));
+		Mensaje men=new Mensaje();
+		model.addAttribute("mensajeForm", men);
+		return "/alumno/alumnoVisualizacionPerfilMensaje";
+	}
+	
+	@GetMapping("/alumno/alumnoVisualizacionPerfilMensajeEnviado/{id}")
+	public String alumnoAccederPerfilMensajeEnviado(Model model, @PathVariable Long id) {
+		model.addAttribute("mensaje", mensajeServicio.findById(id));
+		Mensaje men=new Mensaje();
+		model.addAttribute("mensajeForm", men);
+		return "/alumno/alumnoVisualizacionPerfilMensaje";
+	}
+
+	
+	
+	//MandarMensajeDesdePerfilEmpresa
+	@PostMapping("/alumno/alumnoMandarMensajeDesdePerfil/{id}")
+	public String mandarMensajeDesdePerfil( @ModelAttribute("mensajeForm")Mensaje mensaje , @AuthenticationPrincipal Usuario alumno, Model model, @PathVariable Long id) {
+		Mensaje men=new Mensaje();
+		mensajeServicio.setearMensaje(alumno, usuarioServicio.findById(id), men, mensaje);
+		usuarioServicio.edit(alumno);
+		usuarioServicio.edit(usuarioServicio.findById(id));
+		return accesoPerfilEmpresa( model,   id);
+	}
+	
+	//MandarMensajeDesdeOtro
+	
+	@PostMapping("/alumno/alumnoMandarMensajeDesdeMensaje/{id}")
+	public String mandarMensajeDesdeMensaje(Model model, @ModelAttribute("mensajeForm")Mensaje mensaje, @AuthenticationPrincipal Usuario alumno, @PathVariable Long id) {
+		Mensaje men=new Mensaje();
+		mensajeServicio.setearMensaje(alumno, usuarioServicio.findById(id), men, mensaje);
+		usuarioServicio.edit(alumno);
+		usuarioServicio.edit(usuarioServicio.findById(id));
+		return  alumnoAccederPerfilMensaje( model,   men.getId());//-----------
+	}
+	
 	
 
 	

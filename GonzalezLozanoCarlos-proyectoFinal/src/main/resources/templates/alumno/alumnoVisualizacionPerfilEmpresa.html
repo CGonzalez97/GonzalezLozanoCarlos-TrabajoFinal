@@ -58,6 +58,14 @@
 				</table>
 			</div>
 			
+			<div class="col-10 my-4 d-flex justify-content-center">
+				<form method="POST" th:action="@{/alumno/alumnoMandarMensajeDesdePerfil/{id}(id=${empresa.id})}"  th:object="${mensajeForm}">
+									
+					<input th:field="*{contenido}" type="text" name="contenido" id="contenido" size="90" maxlength="400">
+					<input type="submit" name="envioMensaje" id="envioMensaje">
+				</form>
+			</div>
+			
 
 		</div>
 

@@ -44,9 +44,26 @@
 			
 			
 			<table class="mt-3 col-10">
-				<tr class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3"><td class="h2"><a href="" class="text-dark text-decoration-none">Remitente</a></td><td>FechaEnvio</td></tr>
+				<tr><th>Recibidos</th></tr>
+				<tr th:each="mensaje:${mensajes}" class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3">
+					<td >De</td>
+					<td class="h2"><a th:text="${mensaje.remitente.nombre}" th:href="@{/alumno/alumnoVisualizacionPerfilMensaje/{id}(id=${mensaje.id})}" class="text-dark text-decoration-none">Remitente</a></td>
+					<td th:text="${mensaje.fechaEnvio}">FechaEnvio</td>
+				</tr>
 				
 			</table>
+			
+			<table class="mt-3 col-10">
+				<tr><th>Enviados</th></tr>
+				<tr th:each="mensaje:${enviados}" class="filaElementoTabla bg-warning d-flex align-items-center justify-content-around elementoVisualizable my-3">
+					<td >Para</td>
+					<td class="h2"><a th:text="${mensaje.destinatario.nombre}" th:href="@{/alumno/alumnoVisualizacionPerfilMensajeEnviado/{id}(id=${mensaje.id})}" class="text-dark text-decoration-none">Destinatario</a></td>
+					<td th:text="${mensaje.fechaEnvio}">FechaEnvio</td>
+				</tr>
+				
+			</table>
+			
+			
 
 			
 

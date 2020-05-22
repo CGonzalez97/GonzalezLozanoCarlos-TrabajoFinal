@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.app.controladores;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,6 +16,7 @@ import com.salesianostriana.dam.app.entidades.Administrador;
 import com.salesianostriana.dam.app.entidades.Alumno;
 import com.salesianostriana.dam.app.entidades.Anuncio;
 import com.salesianostriana.dam.app.entidades.Empresa;
+import com.salesianostriana.dam.app.entidades.Mensaje;
 import com.salesianostriana.dam.app.entidades.Usuario;
 import com.salesianostriana.dam.app.servicios.AlumnoServicio;
 import com.salesianostriana.dam.app.servicios.AministradorServicio;
@@ -93,7 +96,8 @@ public class AdminController {
 	}
 	
 	@PostMapping("/admin/adminAddAnuncio")
-	public String procesamientoAddAnuncio(@ModelAttribute("anuncioForm") Anuncio anuncio, Model model) {
+	public String procesamientoAddAnuncio(@ModelAttribute("anuncioForm") Anuncio anuncio, Model model, @AuthenticationPrincipal Usuario admin) {
+		((Administrador)admin).addAnuncio(anuncio);
 		anuncioServicio.save(anuncio);
 		return accesoVisualizacionAnuncios(model)/*"/admin/adminVisualizacionAnuncios"*/;
 	}
@@ -110,6 +114,8 @@ public class AdminController {
 	@PostMapping("/admin/adminAddAlumno")
 	public String procesarAddAlumno(@ModelAttribute("alumnoForm") Alumno alumno,Model model, BCryptPasswordEncoder passwordEncoder) {
 //		alumno.setContrasenya(passwordEncoder.encode(alumno.getContrasenya()));
+		alumno.setRecibidos(new ArrayList<Mensaje>());
+		alumno.setEnviados(new ArrayList<Mensaje>());
 		usuarioServicio.save(alumno,passwordEncoder);
 		return accesoVisualizacionAlumnos( model);
 	}
@@ -127,6 +133,8 @@ public class AdminController {
 	@PostMapping("/admin/adminAddEmpresa")
 	public String procesarAdminAddEmpresa(Model model, @ModelAttribute("empresaForm") Empresa empresa, BCryptPasswordEncoder passwordEncoder) {
 //		empresa.setContrasenya(passwordEncoder.encode(empresa.getContrasenya()));
+		empresa.setRecibidos(new ArrayList<Mensaje>());
+		empresa.setEnviados(new ArrayList<Mensaje>());
 		usuarioServicio.save(empresa,passwordEncoder);
 		return accesoVisualizacionEmpresas( model);
 	}
@@ -136,7 +144,7 @@ public class AdminController {
 	@GetMapping("/admin/adminEliminarAnuncio/{id}")
 	public String adminEliminarAnuncio(Model model, @PathVariable Long id, @AuthenticationPrincipal Administrador admin) {
 		Anuncio anun=anuncioServicio.findById(id);
-		admin.removeAnuncio(anun);
+//		admin.removeAnuncio(anun);
 		anuncioServicio.delete(anun);
 		return accesoVisualizacionAnuncios(model);
 	}

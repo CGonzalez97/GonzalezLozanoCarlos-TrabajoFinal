@@ -1,7 +1,5 @@
 package com.salesianostriana.dam.app.entidades;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,8 +11,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
@@ -42,12 +40,12 @@ public abstract class Usuario  implements UserDetails {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(fetch =FetchType.EAGER, mappedBy="destinatario")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="destinatario")
 	private List<Mensaje> recibidos;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(mappedBy="remitente")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="remitente")
 	private List<Mensaje> enviados;
 	
 	

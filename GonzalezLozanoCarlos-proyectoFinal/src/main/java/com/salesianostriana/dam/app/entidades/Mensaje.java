@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.app.entidades;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +19,7 @@ public class Mensaje {
 	private long id;
 	
 	private String contenido;
-	private Date fechaEnvio;
+	private LocalDate fechaEnvio;
 	
 	@ManyToOne
 	private Usuario remitente;

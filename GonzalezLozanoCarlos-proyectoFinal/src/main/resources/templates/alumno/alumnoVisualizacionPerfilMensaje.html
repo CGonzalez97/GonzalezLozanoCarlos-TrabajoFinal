@@ -23,7 +23,7 @@
 
 	
 	
-	<div th:replace="~{fragments/menuAlumno::menuAlumno}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
+	<div th:replace="~{fragments/menuAlumnoPerfil::menuAlumnoPerfil}" class="container-fluid col-12 bg-warning px-0 mx-0 menu" >
 		
 		<ul class="d-flex flex-row col-8 offset-2 container-fluid bg-warning text-dark my-0" >
 			<li  class="col-3 d-flex align-items-center justify-content-center h3 my-0"><a href="" class="text-dark text-decoration-none"><div>Anuncios</div></a></li>
@@ -44,20 +44,25 @@
 		
 		<div class="bg-light col-8 offset-2 h-100 px-0 d-flex flex-column align-items-center cuerpoInicio">
 
-			<div class="d-flex flex-row justify-content-between ml-3 my-3 tituloDatos" >
-				<div class="col-4 h3">Remitente</div>
+			<div class="d-flex flex-row justify-content-between ml-3 my-3 tituloDatos w-75" >
+				<div class="col-4 h3 text-center" th:text="'De '+${mensaje.remitente.nombre}">Remitente</div>
+				<div class="col-4 h3 text-center" th:text="'Para '+${mensaje.destinatario.nombre}">Destinatario</div>
+				<div class="col-4 h3 text-center" th:text="${mensaje.fechaEnvio}">Fecha</div>
 				
 			</div>
 			
 
-			<div class="col-10  my-4" id="contenidoMensaje">Contenido</div>
+			<div class="col-8  my-4 contenidoMensaje" id="contenidoMensaje" th:text="${mensaje.contenido}">Contenido</div>
 
+			
 			<div class="col-10 my-4 d-flex justify-content-center">
-				<form >
-					<input type="text" name="respuesta" id="respuesta" size="90" maxlength="400">
+				<form method="POST" th:action="@{/alumno/alumnoMandarMensajeDesdeMensaje/{id}(id=${mensaje.remitente.id})}"  th:object="${mensajeForm}">
+									
+					<input th:field="*{contenido}" type="text" name="contenido" id="contenido" size="90" maxlength="400">
 					<input type="submit" name="envioMensaje" id="envioMensaje">
 				</form>
 			</div>
+			 
 
 			
 
